@@ -218,26 +218,25 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden pt-28">
-      {/* Background Image - mobile/tablet only */}
-      <div className="absolute inset-0 block lg:hidden">
-        <Image
-          src={images.hero.src}
-          alt={images.hero.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center opacity-30"
-        />
-        <div className="absolute inset-0 bg-midnight/90" />
-      </div>
-
-      <div className="cinematic-overlay hidden lg:block pointer-events-none opacity-40" />
-      <div className="absolute right-[5%] top-28 hidden size-72 ornament-ring opacity-60 lg:block" />
-      <div className="absolute right-[13%] top-48 hidden size-40 ornament-ring opacity-60 lg:block" />
+    <section id="home" className="relative min-h-screen overflow-hidden">
+      <video
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={images.hero.src}
+        aria-label="Lerk Foods luxury catering banner video"
+      >
+        <source src="/videos/banner-lerk.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-r from-midnight via-midnight/72 to-midnight/18" />
+      <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/18 to-midnight/50" />
+      <div className="absolute right-[5%] top-28 hidden size-72 ornament-ring opacity-55 lg:block" />
+      <div className="absolute right-[13%] top-48 hidden size-40 ornament-ring opacity-55 lg:block" />
       <div className="absolute bottom-12 left-[8%] h-px w-72 bg-gradient-to-r from-transparent via-champagne/60 to-transparent" />
 
-      <div className="container-shell relative z-10 grid min-h-[calc(100vh-7rem)] items-center gap-12 py-16 lg:grid-cols-[1.03fr_0.97fr]">
+      <div className="container-shell relative z-10 flex min-h-screen items-end pb-16 pt-44 md:pb-20 lg:pb-24">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -273,28 +272,6 @@ function Hero() {
               View Menus
             </GoldButton>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
-          className="image-vignette group relative hidden min-h-[32rem] overflow-hidden border border-champagne/24 lg:block"
-        >
-          <video
-            className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={images.hero.src}
-            aria-label="Lerk Foods luxury catering banner video"
-          >
-            <source src="/videos/banner-lerk.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-6 border border-champagne/20 pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 h-40 w-40 border-r border-t border-champagne/50 pointer-events-none z-10" />
-          <div className="absolute bottom-0 left-0 h-40 w-40 border-b border-l border-champagne/50 pointer-events-none z-10" />
         </motion.div>
       </div>
     </section>
