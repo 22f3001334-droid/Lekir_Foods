@@ -431,25 +431,6 @@ function MenuSection() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <GoldButton href="#contact">{section.cta}</GoldButton>
           </div>
-
-          <motion.form variants={fadeUp} className="royal-card mt-10 grid gap-4 p-5 md:grid-cols-2">
-            {["Name", "Phone", "Event Type", "Guest Count"].map((label) => (
-              <label key={label} className="grid gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-champagne/78">
-                {label}
-                <input
-                  aria-label={label}
-                  className="border border-champagne/18 bg-midnight/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/32 focus:border-champagne/70"
-                  placeholder={label}
-                />
-              </label>
-            ))}
-            <button
-              type="button"
-              className="gold-gradient-bg min-h-12 px-5 text-xs font-bold uppercase tracking-[0.18em] text-midnight md:col-span-2"
-            >
-              Get Menu Suggestions
-            </button>
-          </motion.form>
         </div>
 
         <motion.div variants={fadeUp} className="image-vignette group relative min-h-[34rem] overflow-hidden border border-champagne/24">
