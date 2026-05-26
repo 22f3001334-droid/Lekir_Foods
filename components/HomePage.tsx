@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   Award,
@@ -39,7 +39,6 @@ import {
   locationAreas,
   navLinks,
   serviceCards,
-  stats,
   testimonials,
   trustCards,
   type IconName,
@@ -609,55 +608,6 @@ function LocationSection() {
     </motion.section>
   );
 }
-
-function CountUpStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.6 });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) {
-      return;
-    }
-
-    let frame = 0;
-    const frames = 55;
-    const timer = window.setInterval(() => {
-      frame += 1;
-      const progress = 1 - Math.pow(1 - frame / frames, 3);
-      setDisplay(Math.round(value * progress));
-      if (frame >= frames) {
-        window.clearInterval(timer);
-        setDisplay(value);
-      }
-    }, 24);
-
-    return () => window.clearInterval(timer);
-  }, [isInView, value]);
-
-  return (
-    <div ref={ref} className="p-6 text-center md:p-8">
-      <div className="font-heading text-5xl text-[#fff2c8] md:text-6xl">
-        <span className="gold-gradient-text">{display}</span>
-        <span>{suffix}</span>
-      </div>
-      <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/62">{label}</p>
-    </div>
-  );
-}
-
-function StatsStrip() {
-  return (
-    <section className="bg-midnight py-14">
-      <div className="container-shell grid divide-y divide-champagne/14 border-y border-champagne/16 md:grid-cols-4 md:divide-x md:divide-y-0">
-        {stats.map((stat) => (
-          <CountUpStat key={stat.label} {...stat} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function SectionGutter() {
   return <div className="section-gutter" aria-hidden="true" />;
 }
@@ -832,7 +782,6 @@ export default function HomePage() {
       <SectionGutter />
       <LocationSection />
       <SectionGutter />
-      <StatsStrip />
       <Testimonials />
       <FAQSection />
       <FooterCTA />
