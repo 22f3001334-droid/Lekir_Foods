@@ -284,13 +284,17 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="image-vignette group relative hidden min-h-[32rem] overflow-hidden border border-champagne/24 lg:block"
         >
-          <Image
-            src={images.hero.src}
-            alt={images.hero.alt}
-            fill
-            sizes="50vw"
-            className="object-cover object-center transition duration-700 group-hover:scale-105"
-          />
+          <video
+            className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={images.hero.src}
+            aria-label="Lerk Foods luxury catering banner video"
+          >
+            <source src="/videos/banner-lerk.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-6 border border-champagne/20 pointer-events-none z-10" />
           <div className="absolute right-0 top-0 h-40 w-40 border-r border-t border-champagne/50 pointer-events-none z-10" />
           <div className="absolute bottom-0 left-0 h-40 w-40 border-b border-l border-champagne/50 pointer-events-none z-10" />
