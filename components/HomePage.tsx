@@ -10,7 +10,6 @@ import {
   Cake,
   ChefHat,
   ChevronDown,
-  CircleCheck,
   Clock3,
   Gem,
   Globe,
@@ -33,7 +32,6 @@ import {
   X,
 } from "lucide-react";
 import {
-  cateringBullets,
   faqs,
   featureSections,
   footerDetails,
@@ -301,57 +299,6 @@ function Hero() {
         </motion.div>
       </div>
     </section>
-  );
-}
-
-function WhatWeDo() {
-  return (
-    <motion.section
-      id="about"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
-      variants={stagger}
-      className="section-padding bg-midnight"
-    >
-      <div className="container-shell grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-        <div>
-          <SectionHeader
-            eyebrow="What Lerk Foods Does"
-            title={"Premium Catering Services\nin Chennai by Lerk Foods"}
-            body="Lerk Foods is a Chennai-based catering and hospitality brand offering:"
-            align="left"
-          />
-          <motion.div variants={stagger} className="mt-9 grid gap-4">
-            {cateringBullets.map((bullet) => (
-              <motion.div
-                key={bullet}
-                variants={fadeUp}
-                className="flex gap-4 border-b border-champagne/10 pb-4 text-sm leading-7 text-white/75"
-              >
-                <CircleCheck className="mt-1 shrink-0 text-champagne" size={18} />
-                <span>{bullet}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        <motion.div variants={fadeUp} className="relative">
-          <div className="image-vignette group relative min-h-[31rem] overflow-hidden border border-champagne/24">
-            <Image
-              src={images.plated.src}
-              alt={images.plated.alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
-          </div>
-          <div className="absolute -bottom-8 right-6 flex size-36 items-center justify-center rounded-full border border-champagne/45 bg-burgundy/92 p-6 text-center text-[0.65rem] font-bold uppercase leading-5 tracking-[0.2em] text-champagne shadow-crimson">
-            Excellence in Every Detail
-          </div>
-        </motion.div>
-      </div>
-    </motion.section>
   );
 }
 
@@ -894,9 +841,8 @@ export default function HomePage() {
     <main className="min-h-screen overflow-hidden bg-midnight">
       <Header />
       <Hero />
-      <WhatWeDo />
-      <TrustStrip />
       <OccasionCards />
+      <TrustStrip />
       <DiningSection />
       <SectionGutter />
       <QualitySection />
