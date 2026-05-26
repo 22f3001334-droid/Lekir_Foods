@@ -245,24 +245,24 @@ function Hero() {
         >
           <motion.p
             variants={fadeUp}
-            className="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-champagne"
+            className="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-champagne/70"
           >
             <Sparkles size={16} />
             Luxury Catering in Chennai
           </motion.p>
           <motion.h1
             variants={fadeUp}
-            className="luxury-heading text-5xl text-[#fff6d8] sm:text-6xl md:text-7xl lg:text-8xl"
+            className="luxury-heading text-5xl text-[#fff6d8]/78 sm:text-6xl md:text-7xl lg:text-8xl"
           >
             Crafted for Taste,
-            <span className="gold-gradient-text mt-2 block">Designed for Experience.</span>
+            <span className="gold-gradient-text mt-2 block opacity-80">Designed for Experience.</span>
           </motion.h1>
-          <motion.p variants={fadeUp} className="mt-7 max-w-2xl text-base leading-8 text-white/75 md:text-lg">
+          <motion.p variants={fadeUp} className="mt-7 max-w-2xl text-base leading-8 text-white/55 md:text-lg">
             Lerk Foods delivers premium outdoor catering, corporate catering, and banquet dining
             from Kans One Hotel, combining refined flavours, structured execution, and consistent
             quality across every event.
           </motion.p>
-          <motion.p variants={fadeUp} className="mt-5 max-w-2xl text-sm leading-7 text-white/58 md:text-base">
+          <motion.p variants={fadeUp} className="mt-5 max-w-2xl text-sm leading-7 text-white/42 md:text-base">
             From weddings and birthdays to corporate events and festive gatherings, we focus on one
             thing above everything else - food that people remember.
           </motion.p>
