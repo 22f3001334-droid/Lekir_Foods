@@ -213,19 +213,14 @@ export const testimonials = [
 
 export const faqs = [
   {
-    question: "What catering services does Lerk Foods provide in Chennai?",
-    answer:
-      "Lerk Foods provides luxury outdoor catering, wedding catering, corporate catering, banquet dining support, birthday catering, festive menus, and private event catering in Chennai.",
-  },
-  {
-    question: "Where is Lerk Foods located?",
-    answer:
-      "Lerk Foods operates from Kans One Hotel, 12 GST Road, Pallavaram, Chennai - 600043.",
-  },
-  {
     question: "Do you provide outdoor catering?",
     answer:
       "Yes. Lerk Foods provides outdoor catering for weddings, corporate events, birthdays, private parties, festive celebrations, and large-scale gatherings.",
+  },
+  {
+    question: "What catering services does Lerk Foods provide in Chennai?",
+    answer:
+      "Lerk Foods provides luxury outdoor catering, wedding catering, corporate catering, banquet dining support, birthday catering, festive menus, and private event catering in Chennai.",
   },
   {
     question: "Can I customise the catering menu?",
@@ -236,16 +231,6 @@ export const faqs = [
     question: "Do you provide catering for corporate events in Chennai?",
     answer:
       "Yes. Lerk Foods handles corporate catering for meetings, conferences, office functions, product launches, and formal business events in Chennai.",
-  },
-  {
-    question: "What are the best luxury outdoor catering services in Chennai?",
-    answer:
-      "Lerk Foods focuses on luxury outdoor catering with refined menus, consistent kitchen systems, professional presentation, and reliable execution from Pallavaram, Chennai.",
-  },
-  {
-    question: "Does Lerk Foods provide wedding catering in Chennai?",
-    answer:
-      "Yes. Lerk Foods provides wedding catering in Chennai with curated menus, buffet and plated presentation, and service planning for large guest counts.",
   },
   {
     question: "Can Lerk Foods handle large-scale banquet and event catering?",

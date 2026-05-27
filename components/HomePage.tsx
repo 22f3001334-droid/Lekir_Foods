@@ -670,6 +670,11 @@ function FAQSection() {
             );
           })}
         </motion.div>
+        <motion.div variants={fadeUp} className="mt-8 lg:ml-[calc(40%+2.5rem)]">
+          <GoldButton href="#contact" variant="outline">
+            Know More
+          </GoldButton>
+        </motion.div>
       </div>
     </motion.section>
   );
