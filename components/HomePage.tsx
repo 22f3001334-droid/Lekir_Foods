@@ -721,6 +721,7 @@ function FAQSection() {
           <AnimatePresence initial={false}>
             {showAllFaqs ? (
               <motion.div
+                id="more-faqs"
                 key="more-faqs"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -728,9 +729,6 @@ function FAQSection() {
                 transition={{ duration: 0.32, ease: "easeInOut" }}
                 className="mt-6 overflow-hidden"
               >
-                <p className="mb-4 border-b border-champagne/16 pb-3 text-xs font-semibold uppercase tracking-[0.3em] text-champagne/78">
-                  Know More
-                </p>
                 <div className="grid gap-3">
                   {moreFaqs.map((faq, index) => renderFaq(faq, index + primaryFaqs.length))}
                 </div>
@@ -741,6 +739,8 @@ function FAQSection() {
           <motion.div variants={fadeUp} className="mt-8">
             <button
               type="button"
+              aria-controls="more-faqs"
+              aria-expanded={showAllFaqs}
               onClick={() => {
                 setShowAllFaqs((current) => !current);
                 setActive(-1);
