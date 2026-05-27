@@ -624,6 +624,8 @@ function Testimonials() {
 
 function FAQSection() {
   const [active, setActive] = useState(0);
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+  const visibleFaqs = showAllFaqs ? faqs : faqs.slice(0, 5);
 
   return (
     <motion.section
@@ -642,7 +644,7 @@ function FAQSection() {
           align="left"
         />
         <motion.div variants={stagger} className="grid gap-3">
-          {faqs.map((faq, index) => {
+          {visibleFaqs.map((faq, index) => {
             const open = active === index;
             return (
               <motion.article key={faq.question} variants={fadeUp} className="border border-champagne/16 bg-graphite/54">
@@ -671,9 +673,14 @@ function FAQSection() {
           })}
         </motion.div>
         <motion.div variants={fadeUp} className="mt-8 lg:ml-[calc(40%+2.5rem)]">
-          <GoldButton href="#contact" variant="outline">
-            Know More
-          </GoldButton>
+          <button
+            type="button"
+            onClick={() => setShowAllFaqs((current) => !current)}
+            className="group inline-flex min-h-12 w-full items-center justify-center gap-2 border border-champagne/55 px-6 text-sm font-semibold uppercase tracking-[0.18em] text-champagne transition duration-300 hover:bg-champagne/10 sm:w-auto"
+          >
+            {showAllFaqs ? "Show Less" : "Know More"}
+            <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+          </button>
         </motion.div>
       </div>
     </motion.section>
