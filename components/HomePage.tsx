@@ -659,7 +659,43 @@ function Testimonials() {
 function FAQSection() {
   const [active, setActive] = useState(0);
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-  const visibleFaqs = showAllFaqs ? faqs : faqs.slice(0, 5);
+  const primaryFaqs = faqs.slice(0, 5);
+  const moreFaqs = faqs.slice(5);
+
+  const renderFaq = (faq: (typeof faqs)[number], index: number) => {
+    const open = active === index;
+
+    return (
+      <motion.article
+        key={faq.question}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.24 }}
+        className="border border-champagne/16 bg-graphite/54"
+      >
+        <button
+          type="button"
+          className="flex w-full items-center justify-between gap-4 p-5 text-left"
+          onClick={() => setActive(open ? -1 : index)}
+          aria-expanded={open}
+        >
+          <span className="font-heading text-xl text-[#fff2c8]">{faq.question}</span>
+          <ChevronDown
+            className={open ? "shrink-0 rotate-180 text-champagne transition" : "shrink-0 text-champagne transition"}
+            size={20}
+          />
+        </button>
+        <motion.div
+          initial={false}
+          animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+          className="overflow-hidden"
+          aria-hidden={!open}
+        >
+          <p className="px-5 pb-5 text-sm leading-7 text-white/66">{faq.answer}</p>
+        </motion.div>
+      </motion.article>
+    );
+  };
 
   return (
     <motion.section
@@ -677,45 +713,45 @@ function FAQSection() {
           body="Straight answers for catering, dining, menus, location, and event planning in Chennai."
           align="left"
         />
-        <motion.div variants={stagger} className="grid gap-3">
-          {visibleFaqs.map((faq, index) => {
-            const open = active === index;
-            return (
-              <motion.article key={faq.question} variants={fadeUp} className="border border-champagne/16 bg-graphite/54">
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between gap-4 p-5 text-left"
-                  onClick={() => setActive(open ? -1 : index)}
-                  aria-expanded={open}
-                >
-                  <span className="font-heading text-xl text-[#fff2c8]">{faq.question}</span>
-                  <ChevronDown
-                    className={`shrink-0 text-champagne transition ${open ? "rotate-180" : ""}`}
-                    size={20}
-                  />
-                </button>
-                <motion.div
-                  initial={false}
-                  animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-                  className="overflow-hidden"
-                  aria-hidden={!open}
-                >
-                  <p className="px-5 pb-5 text-sm leading-7 text-white/66">{faq.answer}</p>
-                </motion.div>
-              </motion.article>
-            );
-          })}
-        </motion.div>
-        <motion.div variants={fadeUp} className="mt-8 lg:ml-[calc(40%+2.5rem)]">
-          <button
-            type="button"
-            onClick={() => setShowAllFaqs((current) => !current)}
-            className="group inline-flex min-h-12 w-full items-center justify-center gap-2 border border-champagne/55 px-6 text-sm font-semibold uppercase tracking-[0.18em] text-champagne transition duration-300 hover:bg-champagne/10 sm:w-auto"
-          >
-            {showAllFaqs ? "Show Less" : "Know More"}
-            <ArrowRight size={16} className="transition group-hover:translate-x-1" />
-          </button>
-        </motion.div>
+        <div>
+          <motion.div variants={stagger} className="grid gap-3">
+            {primaryFaqs.map((faq, index) => renderFaq(faq, index))}
+          </motion.div>
+
+          <AnimatePresence initial={false}>
+            {showAllFaqs ? (
+              <motion.div
+                key="more-faqs"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.32, ease: "easeInOut" }}
+                className="mt-6 overflow-hidden"
+              >
+                <p className="mb-4 border-b border-champagne/16 pb-3 text-xs font-semibold uppercase tracking-[0.3em] text-champagne/78">
+                  Know More
+                </p>
+                <div className="grid gap-3">
+                  {moreFaqs.map((faq, index) => renderFaq(faq, index + primaryFaqs.length))}
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+
+          <motion.div variants={fadeUp} className="mt-8">
+            <button
+              type="button"
+              onClick={() => {
+                setShowAllFaqs((current) => !current);
+                setActive(-1);
+              }}
+              className="group inline-flex min-h-12 w-full items-center justify-center gap-2 border border-champagne/55 px-6 text-sm font-semibold uppercase tracking-[0.18em] text-champagne transition duration-300 hover:bg-champagne/10 sm:w-auto"
+            >
+              {showAllFaqs ? "Show Less" : "Know More"}
+              <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+            </button>
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   );
