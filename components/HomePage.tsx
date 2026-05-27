@@ -145,8 +145,15 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-champagne/10 bg-midnight/92 backdrop-blur-xl">
       <div className="container-shell flex min-h-20 items-center justify-between gap-6">
-        <a href="#home" className="font-logo text-3xl font-semibold text-[#fff3c4]">
-          Lerk <span className="gold-gradient-text">Foods</span>
+        <a href="#home" className="inline-flex items-center" aria-label="Lerk Foods home">
+          <Image
+            src="/images/lerk-gold-2.png"
+            alt="Lerk Foods"
+            width={96}
+            height={96}
+            priority
+            className="h-16 w-16 object-contain"
+          />
         </a>
 
         <nav className="hidden items-center gap-7 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/68 lg:flex">
@@ -702,9 +709,13 @@ function Footer() {
     <footer className="bg-midnight py-12">
       <div className="container-shell grid gap-8 border-t border-champagne/16 pt-10 lg:grid-cols-[1fr_1.4fr_0.6fr]">
         <div>
-          <p className="font-logo text-4xl font-semibold text-[#fff3c4]">
-            Lerk <span className="gold-gradient-text">Foods</span>
-          </p>
+          <Image
+            src="/images/lerk-gold-2.png"
+            alt="Lerk Foods"
+            width={112}
+            height={112}
+            className="h-20 w-20 object-contain"
+          />
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
             Luxury catering, curated menus, and hotel dining from Kans One Hotel, Pallavaram.
           </p>
