@@ -376,12 +376,55 @@ function QualitySection() {
   const section = featureSections[1];
 
   return (
-    <FeatureSection
-      section={section}
-      className="premium-section bg-graphite"
-      imageSide="left"
-      badge={section.badge}
-    />
+    <motion.section
+      id={section.id}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.22 }}
+      variants={stagger}
+      className="premium-section relative min-h-[42rem] overflow-hidden bg-midnight"
+    >
+      <Image
+        src="/images/approach-food-quality.png"
+        alt="Our approach to food quality at Lerk Foods"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-midnight/94 via-midnight/70 to-midnight/24" />
+      <div className="absolute inset-0 bg-gradient-to-t from-midnight/72 via-transparent to-midnight/32" />
+
+      <div className="container-shell section-padding relative z-10 min-h-[42rem] flex items-center">
+        <motion.div variants={fadeUp} className="max-w-2xl">
+          <div className="mb-7">
+            <IconBadge icon={section.icon} />
+          </div>
+          <SectionHeader
+            eyebrow={section.eyebrow}
+            title={section.title}
+            body={section.body}
+            align="left"
+          />
+          <motion.div variants={stagger} className="mt-8 grid gap-3">
+            {section.bullets.map((item) => (
+              <motion.div
+                key={item}
+                variants={fadeUp}
+                className="flex gap-3 border border-champagne/18 bg-midnight/52 px-4 py-3 text-sm leading-7 text-white/78 backdrop-blur-sm"
+              >
+                <Star className="mt-1 shrink-0 fill-champagne/40 text-champagne" size={15} />
+                <span>{item}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+          {section.badge ? (
+            <div className="mt-8 inline-flex border border-champagne/45 bg-midnight/62 px-5 py-3 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-champagne backdrop-blur-sm">
+              {section.badge}
+            </div>
+          ) : null}
+        </motion.div>
+      </div>
+    </motion.section>
   );
 }
 
