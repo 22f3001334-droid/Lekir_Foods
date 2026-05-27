@@ -391,11 +391,11 @@ function QualitySection() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-midnight/94 via-midnight/70 to-midnight/24" />
+      <div className="absolute inset-0 bg-gradient-to-r from-midnight via-midnight/76 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-midnight/72 via-transparent to-midnight/32" />
 
-      <div className="container-shell section-padding relative z-10 min-h-[42rem] flex items-center">
-        <motion.div variants={fadeUp} className="max-w-2xl">
+      <div className="container-shell section-padding relative z-10 min-h-[42rem] flex items-center justify-start">
+        <motion.div variants={fadeUp} className="max-w-xl lg:max-w-[34rem]">
           <div className="mb-7">
             <IconBadge icon={section.icon} />
           </div>
@@ -410,7 +410,7 @@ function QualitySection() {
               <motion.div
                 key={item}
                 variants={fadeUp}
-                className="flex gap-3 border border-champagne/18 bg-midnight/52 px-4 py-3 text-sm leading-7 text-white/78 backdrop-blur-sm"
+                className="flex gap-3 border border-champagne/18 bg-midnight/46 px-4 py-3 text-sm leading-7 text-white/78 backdrop-blur-sm"
               >
                 <Star className="mt-1 shrink-0 fill-champagne/40 text-champagne" size={15} />
                 <span>{item}</span>
