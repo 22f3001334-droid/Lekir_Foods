@@ -382,20 +382,25 @@ function QualitySection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.22 }}
       variants={stagger}
-      className="premium-section relative min-h-[42rem] overflow-hidden bg-midnight"
+      className="premium-section relative min-h-[46rem] overflow-hidden bg-midnight"
     >
       <Image
         src="/images/approach-food-quality.png"
         alt="Our approach to food quality at Lerk Foods"
         fill
         sizes="100vw"
-        className="object-cover object-center"
+        className="object-cover object-[72%_center]"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-midnight via-midnight/76 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-midnight/72 via-transparent to-midnight/32" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#020203] via-midnight/96 to-midnight/22" />
+      <div className="absolute inset-y-0 left-0 z-[2] w-full bg-[#020203]/82 lg:w-[44%]" />
+      <div className="absolute inset-0 z-[3] bg-gradient-to-t from-midnight/84 via-transparent to-midnight/40" />
+      <div className="absolute inset-0 z-[3] bg-[radial-gradient(circle_at_center,transparent_34%,rgba(2,2,3,0.72)_100%)]" />
 
-      <div className="container-shell section-padding relative z-10 min-h-[42rem] flex items-center justify-start">
-        <motion.div variants={fadeUp} className="max-w-xl lg:max-w-[34rem]">
+      <div className="container-shell section-padding relative z-10 grid min-h-[46rem] items-center gap-12 lg:grid-cols-[0.4fr_0.6fr]">
+        <motion.div
+          variants={fadeUp}
+          className="rounded-[6px] border border-champagne/22 bg-midnight/74 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.58)] backdrop-blur-md md:p-8 lg:p-10"
+        >
           <div className="mb-7">
             <IconBadge icon={section.icon} />
           </div>
@@ -405,19 +410,21 @@ function QualitySection() {
             body={section.body}
             align="left"
           />
-          <motion.div variants={stagger} className="mt-8 grid gap-3">
+          <motion.div variants={stagger} className="mt-9 grid gap-4">
             {section.bullets.map((item) => (
               <motion.div
                 key={item}
                 variants={fadeUp}
-                className="flex gap-3 border border-champagne/18 bg-midnight/46 px-4 py-3 text-sm leading-7 text-white/78 backdrop-blur-sm"
+                whileHover={{ x: 6 }}
+                className="group flex gap-3 rounded-[6px] border border-champagne/24 bg-[#08090d]/72 px-4 py-3 text-sm leading-7 text-white/82 shadow-[0_16px_44px_rgba(0,0,0,0.34)] backdrop-blur-sm transition-colors hover:border-champagne/45 hover:bg-midnight/86"
               >
-                <Star className="mt-1 shrink-0 fill-champagne/40 text-champagne" size={15} />
+                <Star className="mt-1 shrink-0 fill-champagne/45 text-champagne transition group-hover:scale-110" size={15} />
                 <span>{item}</span>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
+        <div className="hidden lg:block" aria-hidden="true" />
       </div>
     </motion.section>
   );
