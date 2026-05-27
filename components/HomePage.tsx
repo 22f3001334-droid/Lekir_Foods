@@ -18,7 +18,6 @@ import {
   Map,
   MapPin,
   Menu,
-  Navigation,
   PartyPopper,
   Phone,
   Quote,
@@ -557,32 +556,22 @@ function LocationSection() {
         </div>
 
         <motion.div variants={fadeUp} className="relative min-h-[34rem] overflow-hidden border border-champagne/22 bg-midnight">
-          <div className="absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(244,210,138,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(244,210,138,0.12)_1px,transparent_1px)] [background-size:42px_42px]" />
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 700 520" role="img" aria-label="Map-style route graphic for Lerk Foods in Pallavaram">
-            <path d="M70 390 C180 330 185 170 315 210 S470 340 630 140" fill="none" stroke="#f4d28a" strokeWidth="2" strokeDasharray="8 10" opacity="0.78" />
-            <path d="M95 120 C210 180 260 115 355 155 S500 250 610 230" fill="none" stroke="#d8b25f" strokeWidth="1.5" opacity="0.5" />
-          </svg>
-          {[
-            ["Pallavaram", "left-[22%] top-[62%]"],
-            ["Airport", "left-[66%] top-[28%]"],
-            ["Chromepet", "left-[48%] top-[42%]"],
-            ["South Chennai", "left-[72%] top-[66%]"],
-          ].map(([label, position]) => (
-            <div key={label} className={`absolute ${position} flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-champagne`}>
-              <MapPin size={16} className="fill-champagne/30" />
-              {label}
-            </div>
-          ))}
-          <div className="absolute left-1/2 top-1/2 w-[min(21rem,calc(100%-3rem))] -translate-x-1/2 -translate-y-1/2 border border-champagne/38 bg-burgundy/92 p-8 text-center shadow-crimson">
-            <Navigation className="mx-auto mb-5 text-champagne" size={34} />
-            <p className="font-logo text-4xl font-semibold text-[#fff3c4]">LERK FOODS</p>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.24em] text-white/70">
-              Kans One Hotel
-            </p>
-            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-champagne">
-              Pallavaram
-            </p>
-          </div>
+          <iframe
+            title="Lerk Foods Google Map"
+            src="https://www.google.com/maps?q=Lerk%20Foods%2C%20Acharya%20Tulsi%20Rd%2C%20Pallavaram%2C%20Chennai%2C%20Tamil%20Nadu%20600043&output=embed"
+            className="absolute inset-0 h-full w-full grayscale-[0.2] invert-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-midnight/45 via-transparent to-midnight/20" />
+          <a
+            href="https://www.google.com/maps/dir//Lerk+Foods,+Acharya+Tulsi+Rd,+Pallavaram,+Chennai,+Tamil+Nadu+600043/@13.0475255,80.2086732,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a525f84d7432dc5:0x7bbbcb0087e808c9!2m2!1d80.1501576!2d12.9711005?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="gold-gradient-bg absolute bottom-5 left-5 z-10 inline-flex min-h-11 items-center justify-center px-5 text-xs font-bold uppercase tracking-[0.18em] text-midnight shadow-gold"
+          >
+            Open Google Map
+          </a>
         </motion.div>
       </div>
     </motion.section>
@@ -750,7 +739,7 @@ function Footer() {
           {[
             { href: "https://www.instagram.com/lerkfoods", label: "Lerk Foods Instagram", Icon: Share2 },
             { href: "https://www.facebook.com/lerkfoods", label: "Lerk Foods Facebook", Icon: Send },
-            { href: "https://share.google/SwK6HTOxQXeNMs0e3", label: "Lerk Foods Google profile", Icon: Globe },
+            { href: "https://www.google.com/maps/dir//Lerk+Foods,+Acharya+Tulsi+Rd,+Pallavaram,+Chennai,+Tamil+Nadu+600043/@13.0475255,80.2086732,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a525f84d7432dc5:0x7bbbcb0087e808c9!2m2!1d80.1501576!2d12.9711005?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D", label: "Lerk Foods Google profile", Icon: Globe },
             { href: "https://wa.me/919363611265", label: "WhatsApp Lerk Foods", Icon: Phone },
           ].map(({ href, label, Icon }) => (
             <a
