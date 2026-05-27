@@ -213,44 +213,103 @@ export const testimonials = [
 
 export const faqs = [
   {
-    question: "Do you provide outdoor catering?",
-    answer:
-      "Yes. Lerk Foods provides outdoor catering for weddings, corporate events, birthdays, private parties, festive celebrations, and large-scale gatherings.",
-  },
-  {
     question: "What catering services does Lerk Foods provide in Chennai?",
     answer:
-      "Lerk Foods provides luxury outdoor catering, wedding catering, corporate catering, banquet dining support, birthday catering, festive menus, and private event catering in Chennai.",
+      "Lerk Foods provides wedding catering, corporate catering, birthday and private event catering, and festive event catering from Kans One Hotel in Pallavaram.",
+  },
+  {
+    question: "Where is Lerk Foods located?",
+    answer: "Lerk Foods operates from Kans One Hotel in Pallavaram, Chennai.",
+  },
+  {
+    question: "Do you provide outdoor catering?",
+    answer:
+      "Yes, Lerk Foods specialises in luxury outdoor catering for weddings, corporate events, and private functions.",
   },
   {
     question: "Can I customise the catering menu?",
     answer:
-      "Yes. Menus can be customised by cuisine preference, event type, guest count, service style, and practical requirements for the venue.",
+      "Yes, menus can be customised based on event type, guest count, and preferences.",
   },
   {
     question: "Do you provide catering for corporate events in Chennai?",
     answer:
-      "Yes. Lerk Foods handles corporate catering for meetings, conferences, office functions, product launches, and formal business events in Chennai.",
-  },
-  {
-    question: "Can Lerk Foods handle large-scale banquet and event catering?",
-    answer:
-      "Yes. Lerk Foods supports large-scale banquet and event catering with standardised recipes, controlled batch cooking, and structured service coordination.",
-  },
-  {
-    question: "Where is Lerk Foods located?",
-    answer:
-      "Lerk Foods operates from Kans One Hotel, 12 GST Road, Pallavaram, Chennai - 600043.",
+      "Yes, Lerk Foods offers structured corporate catering with reliable service and consistent food quality.",
   },
   {
     question: "What are the best luxury outdoor catering services in Chennai?",
     answer:
-      "Lerk Foods focuses on luxury outdoor catering with refined menus, consistent kitchen systems, professional presentation, and reliable execution from Pallavaram, Chennai.",
+      "Lerk Foods offers luxury outdoor catering services in Chennai for weddings, corporate gatherings, private celebrations, and festive events. Operating from Kans One Hotel, Lerk Foods focuses on refined food quality, elegant presentation, professional buffet setups, and structured event execution designed to create a premium guest experience.",
   },
   {
     question: "Does Lerk Foods provide wedding catering in Chennai?",
     answer:
-      "Yes. Lerk Foods provides wedding catering in Chennai with curated menus, buffet and plated presentation, and service planning for large guest counts.",
+      "Yes. Lerk Foods provides wedding catering services in Chennai with customised menus, outdoor buffet setups, banquet dining support, and large-scale event execution. The catering experience is designed around flavour consistency, hospitality, presentation quality, and smooth service flow for both intimate weddings and grand celebrations.",
+  },
+  {
+    question: "Do you offer corporate catering services near Chennai Airport and Pallavaram?",
+    answer:
+      "Yes. Lerk Foods provides corporate catering services near Chennai Airport, Pallavaram, and surrounding business zones. Services include buffet catering, meeting refreshments, conference dining, team lunches, and corporate event catering with timely service, structured kitchen operations, and professionally curated menus.",
+  },
+  {
+    question: "Can Lerk Foods handle large-scale banquet and event catering?",
+    answer:
+      "Yes. Lerk Foods is equipped to handle large-scale banquet and outdoor catering events with organised kitchen systems, batch-controlled cooking, and coordinated service execution. The team is experienced in managing weddings, corporate functions, festive events, and private gatherings while maintaining food consistency and presentation quality.",
+  },
+  {
+    question: "What types of events does Lerk Foods cater for?",
+    answer:
+      "Lerk Foods provides catering services for weddings, corporate events, birthdays, engagement ceremonies, family gatherings, festive celebrations, banquet events, and private parties in Chennai. Menus and service styles can be customised based on the event type, guest count, and dining preferences.",
+  },
+  {
+    question: "What makes Lerk Foods different from other catering services in Chennai?",
+    answer:
+      "Lerk Foods combines culinary quality with hotel-level operational discipline. Operating from Kans One Hotel, the brand focuses on ingredient quality, flavour consistency, presentation standards, hygiene, and structured service execution. This balance allows Lerk Foods to deliver a refined catering experience across different event formats.",
+  },
+  {
+    question: "Does Lerk Foods prepare food from a professional hotel kitchen?",
+    answer:
+      "Yes. Lerk Foods operates from the kitchen facilities at Kans One Hotel. This enables the team to maintain controlled preparation processes, food hygiene standards, consistent cooking methods, and efficient catering execution for both hotel dining and outdoor events.",
+  },
+  {
+    question: "How does Lerk Foods maintain food quality for large events?",
+    answer:
+      "Lerk Foods maintains food quality through structured kitchen workflows, standardised recipes, controlled batch cooking, ingredient selection, and coordinated service management. These systems help maintain consistency in taste, freshness, temperature, and presentation even during large-scale catering events and banquet services.",
+  },
+  {
+    question: "Can catering menus be customised for weddings, birthdays, and corporate events?",
+    answer:
+      "Yes. Lerk Foods offers customised catering menus for weddings, birthdays, corporate functions, festive events, and private gatherings. Clients can choose from multiple cuisine styles, buffet formats, and menu combinations based on the scale and tone of the event.",
+  },
+  {
+    question: "Does Kans One Hotel have all-day dining operated by Lerk Foods?",
+    answer:
+      "Yes. The all-day dining experience at Kans One Hotel is operated by Lerk Foods. Guests can enjoy breakfast, lunch, dinner, and curated dining options prepared with a focus on consistency, quality, and hospitality.",
+  },
+  {
+    question: "Which catering service in Chennai offers both banquet dining and outdoor catering?",
+    answer:
+      "Lerk Foods provides both banquet dining and luxury outdoor catering services in Chennai. The brand caters to weddings, business events, birthdays, festive gatherings, and private celebrations with professionally managed food service and event dining solutions.",
+  },
+  {
+    question: "Where can I find premium catering services in Pallavaram, Chennai?",
+    answer:
+      "Lerk Foods, located at Kans One Hotel, offers premium catering services in Pallavaram for weddings, corporate events, banquet functions, birthdays, and outdoor celebrations. The focus is on refined menus, reliable execution, and elevated presentation.",
+  },
+  {
+    question: "Who provides corporate buffet catering in Chennai?",
+    answer:
+      "Lerk Foods provides corporate buffet catering services in Chennai for meetings, conferences, office events, and professional gatherings. The catering service is designed for timely execution, organised setup, balanced menus, and consistent food quality suitable for corporate environments.",
+  },
+  {
+    question: "Does Lerk Foods provide catering for birthdays and private parties?",
+    answer:
+      "Yes. Lerk Foods provides catering services for birthdays, anniversary celebrations, house parties, and private gatherings in Chennai. Menus can be tailored based on the guest profile, cuisine preference, and style of event, with options for buffet dining and curated food presentation.",
+  },
+  {
+    question: "What food options are available at Kans One Hotel in Pallavaram?",
+    answer:
+      "The dining experience at Kans One Hotel, operated by Lerk Foods, includes breakfast, lunch, dinner, buffet options, and curated multi-cuisine dishes. Guests and visitors can enjoy consistent, well-prepared meals throughout the day in a comfortable dining environment.",
   },
 ];
 
