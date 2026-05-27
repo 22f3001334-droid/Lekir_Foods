@@ -740,11 +740,19 @@ function Footer() {
           </a>
         </div>
         <div className="flex gap-3 lg:justify-end">
-          {[Share2, Send, Globe, Phone].map((Icon, index) => (
+          {[
+            { href: "https://www.instagram.com/lerkfoods", label: "Lerk Foods Instagram", Icon: Share2 },
+            { href: "https://www.facebook.com/lerkfoods", label: "Lerk Foods Facebook", Icon: Send },
+            { href: "https://share.google/SwK6HTOxQXeNMs0e3", label: "Lerk Foods Google profile", Icon: Globe },
+            { href: "https://wa.me/919363611265", label: "WhatsApp Lerk Foods", Icon: Phone },
+          ].map(({ href, label, Icon }) => (
             <a
-              key={index}
-              href={index === 3 ? "tel:+910000000000" : "#home"}
-              aria-label={index === 3 ? "Call Lerk Foods" : "Lerk Foods social profile"}
+              key={label}
+              href={href}
+              aria-label={label}
+              title={label}
+              target="_blank"
+              rel="noopener noreferrer"
               className="gold-border inline-flex size-11 items-center justify-center text-champagne transition hover:bg-champagne/10"
             >
               <Icon size={18} />
