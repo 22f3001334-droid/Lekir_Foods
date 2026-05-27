@@ -143,7 +143,7 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-champagne/10 bg-midnight/35 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-champagne/10 bg-midnight/92 backdrop-blur-xl">
       <div className="container-shell flex min-h-20 items-center justify-between gap-6">
         <a href="#home" className="font-logo text-3xl font-semibold text-[#fff3c4]">
           Lerk <span className="gold-gradient-text">Foods</span>
@@ -218,9 +218,9 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden">
+    <section id="home" className="relative overflow-hidden bg-midnight">
       <video
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="block h-auto w-full"
         autoPlay
         muted
         loop
@@ -230,51 +230,47 @@ function Hero() {
       >
         <source src="/videos/banner-lerk.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-gradient-to-r from-midnight via-midnight/72 to-midnight/18" />
-      <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/18 to-midnight/50" />
-      <div className="absolute right-[5%] top-28 hidden size-72 ornament-ring opacity-55 lg:block" />
-      <div className="absolute right-[13%] top-48 hidden size-40 ornament-ring opacity-55 lg:block" />
-      <div className="absolute bottom-12 left-[8%] h-px w-72 bg-gradient-to-r from-transparent via-champagne/60 to-transparent" />
+    </section>
+  );
+}
 
-      <div className="container-shell relative z-10 flex min-h-screen items-end pb-16 pt-44 md:pb-20 lg:pb-24">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={stagger}
-          className="max-w-3xl"
-        >
-          <motion.p
-            variants={fadeUp}
-            className="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-champagne/70"
-          >
+function HeroIntro() {
+  return (
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={stagger}
+      className="section-padding bg-midnight"
+    >
+      <div className="container-shell">
+        <motion.div variants={fadeUp} className="max-w-3xl">
+          <p className="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-champagne">
             <Sparkles size={16} />
             Luxury Catering in Chennai
-          </motion.p>
-          <motion.h1
-            variants={fadeUp}
-            className="luxury-heading text-5xl text-[#fff6d8]/78 sm:text-6xl md:text-7xl lg:text-8xl"
-          >
+          </p>
+          <h1 className="luxury-heading text-5xl text-[#fff6d8] sm:text-6xl md:text-7xl lg:text-8xl">
             Crafted for Taste,
-            <span className="gold-gradient-text mt-2 block opacity-80">Designed for Experience.</span>
-          </motion.h1>
-          <motion.p variants={fadeUp} className="mt-7 max-w-2xl text-base leading-8 text-white/55 md:text-lg">
+            <span className="gold-gradient-text mt-2 block">Designed for Experience.</span>
+          </h1>
+          <p className="mt-7 max-w-2xl text-base leading-8 text-white/75 md:text-lg">
             Lerk Foods delivers premium outdoor catering, corporate catering, and banquet dining
             from Kans One Hotel, combining refined flavours, structured execution, and consistent
             quality across every event.
-          </motion.p>
-          <motion.p variants={fadeUp} className="mt-5 max-w-2xl text-sm leading-7 text-white/42 md:text-base">
+          </p>
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-white/58 md:text-base">
             From weddings and birthdays to corporate events and festive gatherings, we focus on one
             thing above everything else - food that people remember.
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-4 sm:flex-row">
+          </p>
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <GoldButton href="#contact">Plan Your Event</GoldButton>
             <GoldButton href="#menus" variant="outline">
               View Menus
             </GoldButton>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -747,8 +743,9 @@ function Footer() {
 export default function HomePage() {
   return (
     <main className="min-h-screen overflow-hidden bg-midnight">
-      <Header />
       <Hero />
+      <Header />
+      <HeroIntro />
       <OccasionCards />
       <TrustStrip />
       <DiningSection />
