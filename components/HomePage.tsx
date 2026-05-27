@@ -723,28 +723,41 @@ function FAQSection() {
 
 function FooterCTA() {
   return (
-    <section className="relative overflow-hidden bg-ruby py-20">
-      <div className="absolute left-1/2 top-1/2 size-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-champagne/16" />
+    <section className="relative min-h-[38rem] overflow-hidden bg-midnight md:min-h-[70vh]">
+      <Image
+        src={images.hero.src}
+        alt="Luxury catering dining experience by Lerk Foods"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#020203] via-midnight/88 to-midnight/58" />
+      <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/28 to-midnight/76" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-champagne/38 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-champagne/32 to-transparent" />
+
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="container-shell relative z-10 text-center"
+        className="container-shell relative z-10 flex min-h-[38rem] items-center justify-center py-24 text-center md:min-h-[70vh]"
       >
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-champagne/80">
-          Begin the Plan
-        </p>
-        <h2 className="luxury-heading mx-auto max-w-4xl text-5xl text-[#fff4cf] md:text-7xl">
-          Let&apos;s Create an Experience
-          <span className="gold-gradient-text block">Your Guests Will Remember.</span>
-        </h2>
-        <motion.div
-          animate={{ opacity: [0.72, 1, 0.72] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          className="mt-9 inline-flex"
-        >
-          <GoldButton href="mailto:hello@lerkfoods.com">Plan Your Event</GoldButton>
-        </motion.div>
+        <div className="max-w-5xl">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-champagne/82">
+            Begin the Plan
+          </p>
+          <h2 className="luxury-heading mx-auto text-5xl text-[#fff4cf] md:text-7xl lg:text-8xl">
+            Let&apos;s Create an Experience
+            <span className="gold-gradient-text mt-2 block">Your Guests Will Remember.</span>
+          </h2>
+          <motion.div
+            animate={{ opacity: [0.78, 1, 0.78] }}
+            transition={{ duration: 3, repeat: Infinity }}
+            className="mt-10 inline-flex"
+          >
+            <GoldButton href="mailto:hello@lerkfoods.com">Plan Your Event</GoldButton>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
