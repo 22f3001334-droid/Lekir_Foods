@@ -417,11 +417,6 @@ function QualitySection() {
               </motion.div>
             ))}
           </motion.div>
-          {section.badge ? (
-            <div className="mt-8 inline-flex border border-champagne/45 bg-midnight/62 px-5 py-3 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-champagne backdrop-blur-sm">
-              {section.badge}
-            </div>
-          ) : null}
         </motion.div>
       </div>
     </motion.section>
