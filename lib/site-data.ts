@@ -60,6 +60,26 @@ export const images = {
     src: "/images/menus.png",
     alt: "Curated catering menu spread with fresh dishes",
   },
+  consistent_taste: {
+    src: "/images/consistent_taste.png",
+    alt: "Freshly prepared gourmet dishes showcasing consistent taste",
+  },
+  kitchen_discipline: {
+    src: "/images/kitchen_discipline.jpg",
+    alt: "Structured and clean luxury catering kitchen staff",
+  },
+  premium_presentation: {
+    src: "/images/premium_presentation.png",
+    alt: "Beautiful high-end buffet table setup",
+  },
+  timely_sensitive: {
+    src: "/images/timely_sensitive.png",
+    alt: "Punctual food delivery and elegant table service setup",
+  },
+  event_experience: {
+    src: "/images/event_experience.png",
+    alt: "Hospitality staff serving guests at a premium social event",
+  },
 };
 
 export const cateringBullets = [
@@ -74,26 +94,31 @@ export const trustCards = [
     title: "Consistent Taste",
     description: "Reliable flavour across large guest counts and high-volume service.",
     icon: "utensils" as IconName,
+    image: images.consistent_taste,
   },
   {
     title: "Kitchen Discipline",
     description: "Clean, structured systems that support calm event execution.",
     icon: "shield" as IconName,
+    image: images.kitchen_discipline,
   },
   {
     title: "Premium Presentation",
     description: "Professional buffet styling, plated service, and refined details.",
     icon: "sparkles" as IconName,
+    image: images.premium_presentation,
   },
   {
     title: "Time-Sensitive Service",
     description: "Reliable planning for weddings, corporate events, and private gatherings.",
     icon: "clock" as IconName,
+    image: images.timely_sensitive,
   },
   {
     title: "Event Experience",
     description: "Hands-on hospitality experience across social and business occasions.",
     icon: "users" as IconName,
+    image: images.event_experience,
   },
 ];
 

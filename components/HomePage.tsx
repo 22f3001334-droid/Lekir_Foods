@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -281,34 +281,124 @@ function HeroIntro() {
 }
 
 function TrustStrip() {
+  const trackRef = useRef<HTMLElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!trackRef.current) return;
+
+      const rect = trackRef.current.getBoundingClientRect();
+      const totalScrollRange = rect.height - window.innerHeight;
+      if (totalScrollRange <= 0) return;
+
+      const progress = Math.max(0, Math.min(1, -rect.top / totalScrollRange));
+      const nextIndex = Math.min(trustCards.length - 1, Math.floor(progress * trustCards.length));
+      setActiveIndex(nextIndex);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
-      variants={stagger}
-      className="section-padding bg-burgundy"
-    >
-      <div className="container-shell">
-        <SectionHeader
-          eyebrow="Why People Choose Lerk"
-          title={"Why Lerk Foods is Trusted\nfor Catering in Chennai"}
-        />
-        <motion.div
-          variants={stagger}
-          className="mt-12 grid divide-y divide-champagne/14 border-y border-champagne/18 md:grid-cols-5 md:divide-x md:divide-y-0"
-        >
-          {trustCards.map((card) => {
-            const Icon = iconMap[card.icon];
-            return (
-              <motion.article key={card.title} variants={fadeUp} className="p-6 text-center">
-                <Icon className="mx-auto mb-5 text-champagne" size={26} strokeWidth={1.6} />
-                <h3 className="font-heading text-xl text-[#fff1c5]">{card.title}</h3>
-                <p className="mt-3 text-xs leading-6 text-white/62">{card.description}</p>
-              </motion.article>
-            );
-          })}
-        </motion.div>
+    <motion.section ref={trackRef} className="relative h-[250vh] bg-burgundy md:h-[400vh]">
+      <div className="sticky top-0 flex h-screen w-full flex-col justify-center overflow-hidden py-6 md:py-16">
+        <div className="container-shell flex h-full w-full flex-col justify-between md:justify-center md:gap-10">
+          <SectionHeader
+            eyebrow="Why People Choose Lerk"
+            title={"Why Lerk Foods is Trusted\nfor Catering in Chennai"}
+          />
+
+          <div className="mt-6 grid flex-grow items-center gap-8 md:mt-0 md:flex-grow-0 md:grid-cols-2 md:gap-16">
+            <div className="relative h-48 w-full overflow-hidden border border-champagne/20 bg-midnight/40 p-1 shadow-2xl sm:h-64 md:h-[480px] md:p-2">
+              <div className="relative h-full w-full overflow-hidden border border-champagne/10">
+                {trustCards.map((card, index) => (
+                  <motion.div
+                    key={card.title}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{
+                      opacity: activeIndex === index ? 1 : 0,
+                      scale: activeIndex === index ? 1 : 1.05,
+                    }}
+                    transition={{ duration: 0.55, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={card.image.src}
+                      alt={card.image.alt}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-midnight/40 via-transparent to-transparent" />
+                  </motion.div>
+                ))}
+
+                <div className="absolute bottom-4 right-4 z-10 md:bottom-6 md:right-6">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeIndex}
+                      initial={{ scale: 0.8, opacity: 0, rotate: -15 }}
+                      animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                      exit={{ scale: 0.8, opacity: 0, rotate: 15 }}
+                      transition={{ duration: 0.35 }}
+                      className="gold-gradient-bg inline-flex size-10 items-center justify-center rounded-full text-midnight shadow-gold md:size-14"
+                    >
+                      {(() => {
+                        const Icon = iconMap[trustCards[activeIndex].icon];
+                        return <Icon className="size-5 md:size-6" strokeWidth={1.8} />;
+                      })()}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative h-[400px] w-full overflow-hidden border-l border-champagne/10 pl-6 md:pl-10">
+              <div
+                className="absolute left-6 right-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:left-10"
+                style={{
+                  transform: "translateY(" + (150 - activeIndex * 100) + "px)",
+                  height: trustCards.length * 100 + "px",
+                }}
+              >
+                {trustCards.map((card, index) => {
+                  const Icon = iconMap[card.icon];
+                  const isActive = activeIndex === index;
+
+                  return (
+                    <div
+                      key={card.title}
+                      className="flex h-[100px] flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      style={{
+                        opacity: isActive ? 1 : 0.25,
+                        transform: isActive ? "scale(1.02) translateX(4px)" : "scale(0.96) translateX(0px)",
+                      }}
+                    >
+                      <div className="mb-1 flex items-center gap-3">
+                        <Icon className={isActive ? "text-champagne" : "text-white/40"} size={20} strokeWidth={1.8} />
+                        <h3 className={isActive ? "font-heading text-lg text-[#fff1c5] transition-colors duration-500 md:text-xl" : "font-heading text-lg text-white/60 transition-colors duration-500 md:text-xl"}>
+                          {card.title}
+                        </h3>
+                      </div>
+                      <p className={isActive ? "max-w-md text-xs leading-5 text-white/86 transition-colors duration-500 md:text-sm" : "max-w-md text-xs leading-5 text-white/35 transition-colors duration-500 md:text-sm"}>
+                        {card.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="gold-gradient-bg pointer-events-none absolute left-0 top-[150px] h-[100px] w-[2px] rounded-full shadow-gold" />
+            </div>
+          </div>
+        </div>
       </div>
     </motion.section>
   );
