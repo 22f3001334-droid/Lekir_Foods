@@ -946,7 +946,7 @@ function Footer() {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-midnight">
+    <main className="min-h-screen overflow-x-hidden bg-midnight">
       <Header />
       <Hero />
       <HeroIntro />
