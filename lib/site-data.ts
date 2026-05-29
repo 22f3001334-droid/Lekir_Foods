@@ -20,7 +20,7 @@ export const navLinks = [
   { label: "Menus", href: "#menus" },
   { label: "Gallery", href: "#gallery" },
   { label: "Blog", href: "#blog" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export const images = {

@@ -172,7 +172,7 @@ function Header() {
 
         <div className="hidden lg:block">
           <a
-            href="#plan-event"
+            href="/contact#plan-event"
             className="border border-champagne/55 px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne/10"
           >
             Plan Your Event
@@ -209,7 +209,7 @@ function Header() {
                 </a>
               ))}
               <a
-                href="#plan-event"
+                href="/contact#plan-event"
                 className="gold-gradient-bg mt-3 px-5 py-4 text-center text-xs font-bold uppercase tracking-[0.2em] text-midnight"
                 onClick={() => setOpen(false)}
               >
@@ -270,7 +270,7 @@ function HeroIntro() {
             thing above everything else - food that people remember.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <GoldButton href="#plan-event">Plan Your Event</GoldButton>
+            <GoldButton href="/contact#plan-event">Plan Your Event</GoldButton>
             <GoldButton href="#menus" variant="outline">
               View Menus
             </GoldButton>
@@ -521,11 +521,13 @@ function OccasionCards() {
             }}
           >
             {serviceCards.map((card) => (
-              <motion.article
+              <motion.a
                 key={card.title}
+                href="/contact#plan-event"
+                aria-label={`Plan  with Lerk Foods`}
                 variants={fadeUp}
                 whileHover={{ y: -8 }}
-                className="royal-card group overflow-hidden shrink-0 w-[290px] sm:w-[330px] md:w-[360px] snap-start"
+                className="royal-card group block overflow-hidden shrink-0 w-[290px] sm:w-[330px] md:w-[360px] snap-start"
               >
                 <div className="image-vignette relative h-60 overflow-hidden">
                   <Image
@@ -545,7 +547,7 @@ function OccasionCards() {
                     <p className="mt-3 text-sm leading-6 text-white/63">{card.description}</p>
                   </div>
                 </div>
-              </motion.article>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -698,9 +700,6 @@ function MenuSection() {
             align="left"
           />
           <BulletList items={section.bullets} />
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <GoldButton href="#contact">{section.cta}</GoldButton>
-          </div>
         </div>
 
         <motion.div variants={fadeUp} className="image-vignette group relative min-h-[34rem] overflow-hidden border border-champagne/24">
@@ -1078,7 +1077,7 @@ function Footer() {
             className="h-20 w-20 object-contain"
           />
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
-            Luxury catering, curated menus, and hotel dining from Kans One Hotel, Pallavaram.
+            Luxury catering, curated menus, and hotel dining from Lerk Foods.
           </p>
         </div>
         <div className="grid gap-4 text-sm text-white/68">
