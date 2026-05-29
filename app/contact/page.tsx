@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Share2, Mail, Phone } from "lucide-react";
 
@@ -26,7 +27,13 @@ export default function ContactPage() {
             <ArrowLeft size={16} />
             Home
           </Link>
-          <span className="font-heading text-2xl text-[#fff9bc]">Lerk Foods</span>
+          <Image
+              src="/images/lerk-gold-2.png"
+              alt="Lerk Foods"
+              width={128}
+              height={128}
+              className="h-24 w-24 object-contain"
+            />
         </header>
 
         <section className="pb-10 pt-12 text-center md:pb-14 md:pt-16">
