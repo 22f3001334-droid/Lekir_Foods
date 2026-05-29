@@ -52,6 +52,10 @@ export const images = {
     src: "/images/dining.png",
     alt: "Premium hotel restaurant interior with warm lighting",
   },
+  kansOne: {
+    src: "/images/kans-one.png",
+    alt: "Kans One Hotel dining space in Pallavaram",
+  },
   quality: {
     src: "/images/quality.png",
     alt: "Professional chef preparing food in a hotel kitchen",
@@ -199,7 +203,7 @@ export const featureSections = [
       "Suitable for hotel guests, business travellers, and walk-in diners",
     ],
     cta: "Explore Dining",
-    image: images.dining,
+    image: images.kansOne,
     icon: "hotel" as IconName,
     bg: "midnight",
   },

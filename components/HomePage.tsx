@@ -566,13 +566,56 @@ function DiningSection() {
   const section = featureSections[0];
 
   return (
-    <FeatureSection
-      section={section}
-      className="premium-section bg-midnight"
-      imageSide="right"
-      beforeDivider
-      afterDivider
-    />
+    <motion.section
+      id={section.id}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.22 }}
+      variants={stagger}
+      className="premium-section relative min-h-[44rem] overflow-hidden bg-midnight"
+    >
+      <Image
+        src={section.image.src}
+        alt={section.image.alt}
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#020203] via-midnight/90 to-midnight/28" />
+      <div className="absolute inset-0 z-[2] bg-gradient-to-t from-midnight/84 via-transparent to-midnight/40" />
+      <div className="absolute inset-y-0 left-0 z-[3] w-full bg-[#020203]/72 lg:w-[42%]" />
+
+      <div className="container-shell section-padding relative z-10 grid min-h-[44rem] items-center gap-12 lg:grid-cols-[0.42fr_0.58fr]">
+        <motion.div
+          variants={fadeUp}
+          className="rounded-[6px] border border-champagne/22 bg-midnight/72 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.58)] backdrop-blur-md md:p-8 lg:p-10"
+        >
+          <div className="mb-7">
+            <IconBadge icon={section.icon} />
+          </div>
+          <SectionHeader
+            eyebrow={section.eyebrow}
+            title={section.title}
+            body={section.body}
+            align="left"
+          />
+          <motion.div variants={stagger} className="mt-9 grid gap-4">
+            {section.bullets.map((item) => (
+              <motion.div
+                key={item}
+                variants={fadeUp}
+                whileHover={{ x: 6 }}
+                className="group flex gap-3 rounded-[6px] border border-champagne/24 bg-[#08090d]/70 px-4 py-3 text-sm leading-7 text-white/82 shadow-[0_16px_44px_rgba(0,0,0,0.34)] backdrop-blur-sm transition-colors hover:border-champagne/45 hover:bg-midnight/86"
+              >
+                <Star className="mt-1 shrink-0 fill-champagne/45 text-champagne transition group-hover:scale-110" size={15} />
+                <span>{item}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+        <div className="hidden lg:block" aria-hidden="true" />
+      </div>
+    </motion.section>
   );
 }
 
