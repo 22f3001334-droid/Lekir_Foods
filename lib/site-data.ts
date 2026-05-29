@@ -64,6 +64,14 @@ export const images = {
     src: "/images/menus.png",
     alt: "Curated catering menu spread with fresh dishes",
   },
+  banquetMenu3a: {
+    src: "/images/banquet-menu-3a.png",
+    alt: "Lerk Foods banquet menu page one",
+  },
+  banquetMenu3b: {
+    src: "/images/banquet-menu-3b.png",
+    alt: "Lerk Foods banquet menu page two",
+  },
   betrothal: {
     src: "/images/betrothal.png",
     alt: "Luxury Indian engagement ceremony dining setting",

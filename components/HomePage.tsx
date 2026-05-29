@@ -681,6 +681,10 @@ function QualitySection() {
 
 function MenuSection() {
   const section = featureSections[2];
+  const menuPages = [
+    { title: "Banquet Menu 3A", image: images.banquetMenu3a },
+    { title: "Banquet Menu 3B", image: images.banquetMenu3b },
+  ];
 
   return (
     <motion.section
@@ -691,29 +695,61 @@ function MenuSection() {
       variants={stagger}
       className="premium-section section-padding bg-ruby"
     >
-      <div className="container-shell grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr]">
-        <div>
-          <SectionHeader
-            eyebrow={section.eyebrow}
-            title={section.title}
-            body={section.body}
-            align="left"
-          />
-          <BulletList items={section.bullets} />
+      <div className="container-shell">
+        <div className="grid items-end gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <SectionHeader
+              eyebrow={section.eyebrow}
+              title={section.title}
+              body={section.body}
+              align="left"
+            />
+            <BulletList items={section.bullets} />
+          </div>
+
+          <motion.div variants={fadeUp} className="rounded-[6px] border border-champagne/18 bg-midnight/30 p-5 text-white/68 md:p-6">
+            <div className="mb-5">
+              <IconBadge icon={section.icon} />
+            </div>
+            <p className="text-sm leading-7 md:text-base">
+              Explore our banquet menu pages for event-ready combinations, from traditional meals to multi-cuisine spreads.
+            </p>
+            <div className="mt-6">
+              <GoldButton href="/contact#plan-event" variant="outline">
+                Plan Your Menu
+              </GoldButton>
+            </div>
+          </motion.div>
         </div>
 
-        <motion.div variants={fadeUp} className="image-vignette group relative min-h-[34rem] overflow-hidden border border-champagne/24">
-          <Image
-            src={section.image.src}
-            alt={section.image.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 45vw"
-            className="object-cover transition duration-700 group-hover:scale-105"
-          />
-          <div className="absolute bottom-6 left-6 z-10 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.22em] text-champagne">
-            <IconBadge icon={section.icon} />
-            Menu Planning
-          </div>
+        <motion.div variants={stagger} className="mt-12 grid gap-6 lg:grid-cols-2">
+          {menuPages.map((page) => (
+            <motion.a
+              key={page.title}
+              href={page.image.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeUp}
+              whileHover={{ y: -6 }}
+              aria-label={page.title}
+              className="group block overflow-hidden rounded-[6px] border border-champagne/22 bg-midnight/52 shadow-[0_24px_70px_rgba(0,0,0,0.38)] transition hover:border-champagne/42"
+            >
+              <div className="overflow-hidden bg-white">
+                <Image
+                  src={page.image.src}
+                  alt={page.image.alt}
+                  width={3508}
+                  height={2480}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-auto w-full object-contain transition duration-700 group-hover:scale-[1.015]"
+                />
+              </div>
+              <div className="flex items-center gap-3 border-t border-champagne/16 px-5 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-champagne">
+                <IconBadge icon={section.icon} />
+                {page.title}
+              </div>
+            </motion.a>
+          ))}
         </motion.div>
       </div>
     </motion.section>
