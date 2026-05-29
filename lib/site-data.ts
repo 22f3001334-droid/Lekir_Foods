@@ -15,7 +15,7 @@ export type IconName =
 
 export const navLinks = [
   { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about" },
   { label: "Services", href: "#services" },
   { label: "Menus", href: "#menus" },
   { label: "Gallery", href: "#gallery" },
