@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  ArrowLeft,
   ArrowRight,
   Award,
   BriefcaseBusiness,
@@ -281,52 +282,64 @@ function HeroIntro() {
 }
 
 function TrustStrip() {
-  const trackRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!trackRef.current) return;
-
       const rect = trackRef.current.getBoundingClientRect();
-      const totalScrollRange = rect.height - window.innerHeight;
+      const trackHeight = rect.height;
+      const windowHeight = window.innerHeight;
+      const startY = rect.top;
+      const totalScrollRange = trackHeight - windowHeight;
+      
       if (totalScrollRange <= 0) return;
-
-      const progress = Math.max(0, Math.min(1, -rect.top / totalScrollRange));
-      const nextIndex = Math.min(trustCards.length - 1, Math.floor(progress * trustCards.length));
-      setActiveIndex(nextIndex);
+      
+      // Progress calculation from 0 to 1
+      const progress = Math.max(0, Math.min(1, -startY / totalScrollRange));
+      
+      // Map progress to active index (0 to 4)
+      const newIndex = Math.min(4, Math.floor(progress * 5));
+      setActiveIndex(newIndex);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <motion.section ref={trackRef} className="relative h-[250vh] bg-burgundy md:h-[400vh]">
-      <div className="sticky top-0 flex h-screen w-full flex-col justify-center overflow-hidden py-6 md:py-16">
-        <div className="container-shell flex h-full w-full flex-col justify-between md:justify-center md:gap-10">
-          <SectionHeader
-            eyebrow="Why People Choose Lerk"
-            title={"Why Lerk Foods is Trusted\nfor Catering in Chennai"}
-          />
+    <motion.section
+      ref={trackRef}
+      className="relative h-[250vh] md:h-[400vh] bg-burgundy"
+    >
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden py-6 md:py-16">
+        <div className="container-shell w-full flex flex-col h-full justify-between md:justify-center md:gap-10">
+          <div>
+            <SectionHeader
+              eyebrow="Why People Choose Lerk"
+              title={"Why Lerk Foods is Trusted\nfor Catering in Chennai"}
+            />
+          </div>
 
-          <div className="mt-6 grid flex-grow items-center gap-8 md:mt-0 md:flex-grow-0 md:grid-cols-2 md:gap-16">
-            <div className="relative h-48 w-full overflow-hidden border border-champagne/20 bg-midnight/40 p-1 shadow-2xl sm:h-64 md:h-[480px] md:p-2">
-              <div className="relative h-full w-full overflow-hidden border border-champagne/10">
-                {trustCards.map((card, index) => (
+          <div className="grid gap-8 md:grid-cols-2 md:gap-16 items-center mt-6 md:mt-0 flex-grow md:flex-grow-0">
+            {/* Left Column: Image Showcase */}
+            <div className="relative w-full h-48 sm:h-64 md:h-[480px] rounded-none overflow-hidden border border-champagne/20 bg-midnight/40 p-1 md:p-2 shadow-2xl">
+              <div className="relative w-full h-full border border-champagne/10 overflow-hidden">
+                {trustCards.map((card, idx) => (
                   <motion.div
                     key={card.title}
                     initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{
-                      opacity: activeIndex === index ? 1 : 0,
-                      scale: activeIndex === index ? 1 : 1.05,
+                    animate={{ 
+                      opacity: activeIndex === idx ? 1 : 0,
+                      scale: activeIndex === idx ? 1 : 1.05,
                     }}
                     transition={{ duration: 0.55, ease: "easeInOut" }}
-                    className="absolute inset-0"
+                    className="absolute inset-0 w-full h-full"
                   >
                     <Image
                       src={card.image.src}
@@ -339,8 +352,9 @@ function TrustStrip() {
                     <div className="absolute inset-0 bg-gradient-to-r from-midnight/40 via-transparent to-transparent" />
                   </motion.div>
                 ))}
-
-                <div className="absolute bottom-4 right-4 z-10 md:bottom-6 md:right-6">
+                
+                {/* Floating Icon Badge */}
+                <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-10">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeIndex}
@@ -348,7 +362,7 @@ function TrustStrip() {
                       animate={{ scale: 1, opacity: 1, rotate: 0 }}
                       exit={{ scale: 0.8, opacity: 0, rotate: 15 }}
                       transition={{ duration: 0.35 }}
-                      className="gold-gradient-bg inline-flex size-10 items-center justify-center rounded-full text-midnight shadow-gold md:size-14"
+                      className="gold-gradient-bg inline-flex size-10 md:size-14 items-center justify-center rounded-full text-midnight shadow-gold"
                     >
                       {(() => {
                         const Icon = iconMap[trustCards[activeIndex].icon];
@@ -360,42 +374,43 @@ function TrustStrip() {
               </div>
             </div>
 
-            <div className="relative h-[400px] w-full overflow-hidden border-l border-champagne/10 pl-6 md:pl-10">
-              <div
-                className="absolute left-6 right-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:left-10"
-                style={{
-                  transform: "translateY(" + (150 - activeIndex * 100) + "px)",
-                  height: trustCards.length * 100 + "px",
+            {/* Right Column: Synced Scrolling List */}
+            <div className="relative w-full h-[400px] overflow-hidden border-l border-champagne/10 pl-6 md:pl-10">
+              <div 
+                className="absolute left-6 md:left-10 right-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                style={{ 
+                  transform: `translateY(${(400 / 2) - (100 / 2) - (activeIndex * 100)}px)`,
+                  height: `${5 * 100}px`
                 }}
               >
-                {trustCards.map((card, index) => {
+                {trustCards.map((card, idx) => {
                   const Icon = iconMap[card.icon];
-                  const isActive = activeIndex === index;
-
+                  const isActive = activeIndex === idx;
                   return (
                     <div
                       key={card.title}
-                      className="flex h-[100px] flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                      style={{
+                      className="h-[100px] flex flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      style={{ 
                         opacity: isActive ? 1 : 0.25,
                         transform: isActive ? "scale(1.02) translateX(4px)" : "scale(0.96) translateX(0px)",
                       }}
                     >
-                      <div className="mb-1 flex items-center gap-3">
+                      <div className="flex items-center gap-3 mb-1">
                         <Icon className={isActive ? "text-champagne" : "text-white/40"} size={20} strokeWidth={1.8} />
-                        <h3 className={isActive ? "font-heading text-lg text-[#fff1c5] transition-colors duration-500 md:text-xl" : "font-heading text-lg text-white/60 transition-colors duration-500 md:text-xl"}>
+                        <h3 className={`font-heading text-lg md:text-xl transition-colors duration-500 ${isActive ? "text-[#fff1c5]" : "text-white/60"}`}>
                           {card.title}
                         </h3>
                       </div>
-                      <p className={isActive ? "max-w-md text-xs leading-5 text-white/86 transition-colors duration-500 md:text-sm" : "max-w-md text-xs leading-5 text-white/35 transition-colors duration-500 md:text-sm"}>
+                      <p className={`text-xs md:text-sm leading-5 transition-colors duration-500 max-w-md ${isActive ? "text-white/86" : "text-white/35"}`}>
                         {card.description}
                       </p>
                     </div>
                   );
                 })}
               </div>
-
-              <div className="gold-gradient-bg pointer-events-none absolute left-0 top-[150px] h-[100px] w-[2px] rounded-full shadow-gold" />
+              
+              {/* Gold vertical bar for the active card zone */}
+              <div className="absolute left-0 top-[150px] w-[2px] h-[100px] gold-gradient-bg shadow-gold rounded-full pointer-events-none" />
             </div>
           </div>
         </div>
@@ -405,44 +420,143 @@ function TrustStrip() {
 }
 
 function OccasionCards() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      const progress = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
+      setScrollProgress(progress);
+      
+      setShowLeftArrow(scrollLeft > 10);
+      setShowRightArrow(scrollLeft < maxScroll - 10);
+    }
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) {
+      el.addEventListener("scroll", handleScroll);
+      handleScroll();
+      
+      window.addEventListener("resize", handleScroll);
+      return () => {
+        el.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleScroll);
+      };
+    }
+  }, []);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollAmount = direction === "left" 
+        ? scrollLeft - clientWidth * 0.75 
+        : scrollLeft + clientWidth * 0.75;
+      
+      scrollRef.current.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <motion.section
       id="services"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       variants={stagger}
-      className="section-padding bg-midnight"
+      className="section-padding bg-midnight relative overflow-hidden"
     >
       <div className="container-shell">
-        <SectionHeader eyebrow="Occasions" title={"Catering Services\nfor Every Occasion"} />
-        <motion.div variants={stagger} className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {serviceCards.map((card) => (
-            <motion.article
-              key={card.title}
-              variants={fadeUp}
-              whileHover={{ y: -8 }}
-              className="royal-card group overflow-hidden"
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <SectionHeader 
+            eyebrow="Occasions" 
+            title={"Catering Services\nfor Every Occasion"} 
+            align="left" 
+          />
+          <div className="flex gap-4 self-start md:self-end">
+            <button
+              onClick={() => scroll("left")}
+              className={`gold-border flex size-12 items-center justify-center rounded-full text-champagne transition-all duration-300 ${
+                showLeftArrow 
+                  ? "opacity-100 hover:bg-champagne/10 hover:scale-105" 
+                  : "opacity-35 cursor-not-allowed"
+              }`}
+              disabled={!showLeftArrow}
+              aria-label="Scroll left"
             >
-              <div className="image-vignette relative h-60 overflow-hidden">
-                <Image
-                  src={card.image.src}
-                  alt={card.image.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                  className="object-cover transition duration-700 group-hover:scale-[1.08]"
-                />
-                <div className="absolute left-5 top-5 z-10">
-                  <IconBadge icon={card.icon} />
+              <ArrowLeft size={18} />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className={`gold-border flex size-12 items-center justify-center rounded-full text-champagne transition-all duration-300 ${
+                showRightArrow 
+                  ? "opacity-100 hover:bg-champagne/10 hover:scale-105" 
+                  : "opacity-35 cursor-not-allowed"
+              }`}
+              disabled={!showRightArrow}
+              aria-label="Scroll right"
+            >
+              <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+
+        {/* Scroll Container */}
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-6 -mx-4 px-4 sm:mx-0 sm:px-0"
+            style={{ 
+              scrollbarWidth: "none", 
+              msOverflowStyle: "none",
+              WebkitOverflowScrolling: "touch" 
+            }}
+          >
+            {serviceCards.map((card) => (
+              <motion.article
+                key={card.title}
+                variants={fadeUp}
+                whileHover={{ y: -8 }}
+                className="royal-card group overflow-hidden shrink-0 w-[290px] sm:w-[330px] md:w-[360px] snap-start"
+              >
+                <div className="image-vignette relative h-60 overflow-hidden">
+                  <Image
+                    src={card.image.src}
+                    alt={card.image.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-cover transition duration-700 group-hover:scale-[1.08]"
+                  />
+                  <div className="absolute left-5 top-5 z-10">
+                    <IconBadge icon={card.icon} />
+                  </div>
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-heading text-2xl text-[#fff2c8]">{card.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-white/63">{card.description}</p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
+                <div className="p-6 min-h-[160px] flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-heading text-2xl text-[#fff2c8]">{card.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-white/63">{card.description}</p>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+
+        {/* Scroll Progress Bar */}
+        <div className="mt-8 mx-auto max-w-xs h-[2px] bg-champagne/10 relative rounded-full overflow-hidden">
+          <div
+            className="absolute left-0 top-0 h-full gold-gradient-bg transition-all duration-150 ease-out rounded-full"
+            style={{ width: `${scrollProgress}%` }}
+          />
+        </div>
       </div>
     </motion.section>
   );
@@ -946,7 +1060,7 @@ function Footer() {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-midnight">
+    <main className="min-h-screen bg-midnight relative">
       <Header />
       <Hero />
       <HeroIntro />

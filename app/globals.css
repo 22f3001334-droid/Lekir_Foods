@@ -172,3 +172,11 @@ a {
     width: min(100% - 1.25rem, 1180px);
   }
 }
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

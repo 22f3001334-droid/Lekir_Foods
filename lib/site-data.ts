@@ -60,6 +60,26 @@ export const images = {
     src: "/images/menus.png",
     alt: "Curated catering menu spread with fresh dishes",
   },
+  betrothal: {
+    src: "/images/betrothal.png",
+    alt: "Luxury Indian engagement ceremony dining setting",
+  },
+  conference: {
+    src: "/images/conference.png",
+    alt: "Corporate conference dining room and banquet layout",
+  },
+  outdoor: {
+    src: "/images/outdoor.png",
+    alt: "Luxurious outdoor buffet catering in garden setting at dusk",
+  },
+  meeting: {
+    src: "/images/meeting.png",
+    alt: "Gourmet coffee break setup in corporate boardroom",
+  },
+  inroom: {
+    src: "/images/inroom.png",
+    alt: "Elegant in-room dining trolley with gourmet food service",
+  },
   consistent_taste: {
     src: "/images/consistent_taste.png",
     alt: "Freshly prepared gourmet dishes showcasing consistent taste",
@@ -124,28 +144,46 @@ export const trustCards = [
 
 export const serviceCards = [
   {
-    title: "Luxury Wedding Catering",
-    description: "Elegant menus, polished service, and memorable dining for wedding celebrations.",
+    title: "Weddings",
+    description: "Elegant menus, custom styling, and seamless banquet service for your special day.",
     image: images.wedding,
     icon: "gem" as IconName,
   },
   {
-    title: "Corporate Catering Services",
-    description: "Structured food service for meetings, conferences, launches, and office events.",
-    image: images.corporate,
-    icon: "briefcase" as IconName,
-  },
-  {
-    title: "Birthday & Private Party Catering",
-    description: "Custom food experiences for intimate gatherings, birthdays, and family events.",
+    title: "Birthdays",
+    description: "Vibrant menus, themed food stalls, and creative dessert setups for memorable celebrations.",
     image: images.birthday,
     icon: "cake" as IconName,
   },
   {
-    title: "Festive & Special Event Catering",
-    description: "Seasonal menus and generous spreads for festive, cultural, and milestone events.",
-    image: images.festive,
+    title: "Bethrotals",
+    description: "Refined traditional and contemporary dining experiences tailored for engagement ceremonies.",
+    image: images.betrothal,
     icon: "party" as IconName,
+  },
+  {
+    title: "Conferences",
+    description: "Large-scale catering with structured timing, break-out snacks, and flawless executive service.",
+    image: images.conference,
+    icon: "briefcase" as IconName,
+  },
+  {
+    title: "Outdoor Catering",
+    description: "Full-service mobile kitchens delivering hot, fresh, and exceptionally styled spreads anywhere.",
+    image: images.outdoor,
+    icon: "utensils" as IconName,
+  },
+  {
+    title: "Corporate Meetings",
+    description: "Gourmet coffee breaks, plated lunches, and premium platters designed to fit business flows.",
+    image: images.meeting,
+    icon: "users" as IconName,
+  },
+  {
+    title: "In room dinings",
+    description: "Upscale in-room menu options and prompt, hotel-standard room service at Kans One.",
+    image: images.inroom,
+    icon: "hotel" as IconName,
   },
 ];
 
