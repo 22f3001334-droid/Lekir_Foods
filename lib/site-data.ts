@@ -138,7 +138,7 @@ export const trustCards = [
     title: "Event Experience",
     description: "Hands-on hospitality experience across social and business occasions.",
     icon: "users" as IconName,
-    image: images.event_experience,
+    image: images.festive,
   },
 ];
 
