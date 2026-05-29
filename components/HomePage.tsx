@@ -149,10 +149,10 @@ function Header() {
           <Image
             src="/images/lerk-gold-2.png"
             alt="Lerk Foods"
-            width={96}
-            height={96}
+            width={128}
+            height={128}
             priority
-            className="h-16 w-16 object-contain"
+            className="h-24 w-24 object-contain"
           />
         </a>
 
@@ -1072,9 +1072,9 @@ function Footer() {
           <Image
             src="/images/lerk-gold-2.png"
             alt="Lerk Foods"
-            width={112}
-            height={112}
-            className="h-20 w-20 object-contain"
+            width={144}
+            height={144}
+            className="h-28 w-28 object-contain"
           />
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
             Luxury catering, curated menus, and hotel dining from Lerk Foods.
