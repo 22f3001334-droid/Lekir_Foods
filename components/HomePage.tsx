@@ -172,7 +172,7 @@ function Header() {
 
         <div className="hidden lg:block">
           <a
-            href="#contact"
+            href="#plan-event"
             className="border border-champagne/55 px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne/10"
           >
             Plan Your Event
@@ -209,7 +209,7 @@ function Header() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="#plan-event"
                 className="gold-gradient-bg mt-3 px-5 py-4 text-center text-xs font-bold uppercase tracking-[0.2em] text-midnight"
                 onClick={() => setOpen(false)}
               >
@@ -270,7 +270,7 @@ function HeroIntro() {
             thing above everything else - food that people remember.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <GoldButton href="#contact">Plan Your Event</GoldButton>
+            <GoldButton href="#plan-event">Plan Your Event</GoldButton>
             <GoldButton href="#menus" variant="outline">
               View Menus
             </GoldButton>
@@ -1005,8 +1005,11 @@ function FAQSection() {
 }
 
 function FooterCTA() {
+  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdFnIcgHxjwAEBOyby-hPJq34duQGE-3bBqT1DIbFm6wa9bnQ/viewform";
+  const embedUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdFnIcgHxjwAEBOyby-hPJq34duQGE-3bBqT1DIbFm6wa9bnQ/viewform?embedded=true";
+
   return (
-    <section className="relative min-h-[38rem] overflow-hidden bg-midnight md:min-h-[70vh]">
+    <section id="plan-event" className="relative overflow-hidden bg-midnight py-20 md:py-28">
       <Image
         src={images.hero.src}
         alt="Luxury catering dining experience by Lerk Foods"
@@ -1014,8 +1017,8 @@ function FooterCTA() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#020203] via-midnight/88 to-midnight/58" />
-      <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/28 to-midnight/76" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#020203] via-midnight/92 to-midnight/68" />
+      <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/38 to-midnight/80" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-champagne/38 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-champagne/32 to-transparent" />
 
@@ -1023,23 +1026,39 @@ function FooterCTA() {
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="container-shell relative z-10 flex min-h-[38rem] items-center justify-center py-24 text-center md:min-h-[70vh]"
+        className="container-shell relative z-10 grid items-center gap-10 lg:grid-cols-[0.75fr_1.25fr]"
       >
-        <div className="max-w-5xl">
+        <div>
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-champagne/82">
             Begin the Plan
           </p>
-          <h2 className="luxury-heading mx-auto text-5xl text-[#fff4cf] md:text-7xl lg:text-8xl">
+          <h2 className="luxury-heading text-5xl text-[#fff4cf] md:text-7xl">
             Let&apos;s Create an Experience
             <span className="gold-gradient-text mt-2 block">Your Guests Will Remember.</span>
           </h2>
-          <motion.div
-            animate={{ opacity: [0.78, 1, 0.78] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="mt-10 inline-flex"
+          <p className="mt-6 max-w-xl text-base leading-8 text-white/70">
+            Share your event details and our team will get back to you with catering support for your date, guest count, and menu needs.
+          </p>
+          <a
+            href={formUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex min-h-12 w-full items-center justify-center gap-2 border border-champagne/55 px-6 text-sm font-semibold uppercase tracking-[0.18em] text-champagne transition duration-300 hover:bg-champagne/10 sm:w-auto"
           >
-            <GoldButton href="mailto:hello@lerkfoods.com">Plan Your Event</GoldButton>
-          </motion.div>
+            Open Form
+            <ArrowRight size={16} />
+          </a>
+        </div>
+
+        <div className="overflow-hidden rounded-[6px] border border-champagne/22 bg-midnight/78 shadow-[0_28px_90px_rgba(0,0,0,0.58)] backdrop-blur-md">
+          <iframe
+            title="Lerk Foods Plan Your Event Form"
+            src={embedUrl}
+            className="h-[42rem] w-full bg-white md:h-[48rem]"
+            loading="lazy"
+          >
+            Loading...
+          </iframe>
         </div>
       </motion.div>
     </section>
