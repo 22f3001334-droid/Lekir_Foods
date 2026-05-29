@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Share2, Mail, Phone } from "lucide-react";
+import { Mail, Phone, Share2 } from "lucide-react";
 
 const formUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSdFnIcgHxjwAEBOyby-hPJq34duQGE-3bBqT1DIbFm6wa9bnQ/viewform?embedded=true";
@@ -9,88 +9,154 @@ const formUrl =
 export const metadata: Metadata = {
   title: "Contact Lerk Foods | Plan Your Event",
   description:
-    "Plan your catering event with Lerk Foods. Share your event details through the embedded enquiry form.",
+    "Plan your catering event with Lerk Foods. Share your event details and our team will get back to you.",
 };
 
 export default function ContactPage() {
   return (
-    <main
-      id="plan-event"
-      className="contact-page-fade min-h-screen bg-[#5B0E2D] px-4 py-8 text-[#fff4cf] sm:px-6 lg:px-8"
-    >
-      <div className="mx-auto max-w-6xl">
-        <header className="flex items-center justify-between gap-4 py-4">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#f4d28a] transition hover:text-[#fff9bc]"
-          >
-            <ArrowLeft size={16} />
-            Home
-          </Link>
-          <Image
+    <main id="plan-event" className="text-[#1C0A0F]">
+
+      {/* ── NAV ─────────────────────────────────────────────────────────── */}
+      <header className="sticky top-0 z-50 border-b border-champagne/10 bg-midnight/95 backdrop-blur-xl">
+        <div className="mx-auto flex min-h-20 max-w-[1180px] items-center justify-between gap-6 px-6">
+          <Link href="/" aria-label="Lerk Foods home">
+            <Image
               src="/images/lerk-gold-2.png"
               alt="Lerk Foods"
               width={128}
               height={128}
               className="h-24 w-24 object-contain"
+              priority
             />
-        </header>
-
-        <section className="pb-10 pt-12 text-center md:pb-14 md:pt-16">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-[#f4d28a]">
+          </Link>
+          <nav className="hidden items-center gap-7 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/68 lg:flex">
+            {[
+              { label: "Home",     href: "/"                  },
+              { label: "About",    href: "/about"             },
+              { label: "Services", href: "/#services"         },
+              { label: "Menus",    href: "/#menus"            },
+              { label: "Blog",     href: "/blog"              },
+            ].map(({ label, href }) => (
+              <Link key={label} href={href} className="transition hover:text-champagne">
+                {label}
+              </Link>
+            ))}
+          </nav>
+          <Link
+            href="/contact#plan-event"
+            className="hidden border border-champagne/38 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne/10 lg:block"
+          >
             Plan Your Event
+          </Link>
+        </div>
+      </header>
+
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <section className="relative h-[62vh] min-h-[420px] w-full overflow-hidden">
+        <Image
+          src="/images/hero.png"
+          alt="Lerk Foods luxury catering experience"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f1015]/55 via-[#0f1015]/30 to-[#0f1015]/70" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+          <p className="mb-4 text-[0.68rem] font-semibold uppercase tracking-[0.42em] text-champagne/80">
+            Get In Touch
           </p>
-          <h1 className="luxury-heading mx-auto max-w-4xl text-5xl text-[#fff9bc] md:text-7xl">
-            Let&apos;s Create an Experience
-            <span className="gold-gradient-text mt-2 block">Your Guests Will Remember.</span>
+          <h1 className="font-logo text-[clamp(3rem,7vw,6.5rem)] font-light leading-[1.05] text-[#F5F0E8]">
+            Hello.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/76 md:text-lg">
-            Tell us about your event, guest count, venue, and menu preferences. Our team will get back to you with catering support tailored to the occasion.
+          <p className="mt-3 font-logo text-[clamp(1.4rem,3.5vw,3rem)] font-light italic leading-[1.2] text-[#F5F0E8]/85">
+            Let&apos;s plan your next event together.
           </p>
-        </section>
+        </div>
+      </section>
 
-        <section className="mx-auto max-w-[900px] rounded-[24px] bg-[#fffaf0] p-3 shadow-[0_28px_90px_rgba(20,0,8,0.34)] sm:p-5 md:p-7">
-          <div className="overflow-hidden rounded-[20px] border border-[#e0ba66]/30 bg-white">
-            <iframe
-              title="Lerk Foods Event Enquiry Form"
-              src={formUrl}
-              className="block h-[82vh] min-h-[760px] w-full md:h-[1100px]"
-              loading="lazy"
-            >
-              Loading...
-            </iframe>
+      {/* ── CONTACT SECTION ──────────────────────────────────────────────── */}
+      <section className="bg-[#F5F0E8] px-6 py-16 md:px-10 md:py-24">
+        <div className="mx-auto grid max-w-[1180px] gap-14 lg:grid-cols-[1fr_2.2fr] lg:gap-20">
+
+          {/* Left – contact details */}
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <div className="mb-6 flex h-11 w-11 items-center justify-center border border-[#5B0E2D]/30">
+              <Mail size={20} className="text-[#5B0E2D]" />
+            </div>
+
+            <h2 className="mb-5 font-logo text-[1.7rem] font-light leading-[1.25] text-[#1C0A0F]">
+              For event bookings
+              <br />
+              and catering enquiries:
+            </h2>
+
+            <div className="space-y-4">
+              <a
+                href="mailto:hello@lerkfoods.com"
+                className="flex items-center gap-3 text-[0.88rem] font-semibold text-[#5B0E2D] underline decoration-[#5B0E2D]/30 underline-offset-4 transition hover:decoration-[#5B0E2D]"
+              >
+                hello@lerkfoods.com
+              </a>
+
+              <a
+                href="tel:+919363611265"
+                className="flex items-center gap-3 text-[0.82rem] text-[#3A1F14]/60 transition hover:text-[#5B0E2D]"
+              >
+                <Phone size={14} className="shrink-0" />
+                +91 93636 11265
+              </a>
+
+              <a
+                href="https://www.instagram.com/lerkfoods"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-[0.82rem] text-[#3A1F14]/60 transition hover:text-[#5B0E2D]"
+              >
+                <Share2 size={14} className="shrink-0" />
+                @lerkfoods
+              </a>
+            </div>
+
+            <div className="mt-8 h-px bg-[#1C0A0F]/10" />
+            <p className="mt-6 text-[0.78rem] leading-[1.8] text-[#3A1F14]/50">
+              Or fill out the enquiry form and our team will get back to you
+              with catering support tailored to your occasion.
+            </p>
           </div>
-        </section>
 
-        <section className="mx-auto grid max-w-[900px] gap-4 py-10 md:grid-cols-3 md:py-12">
-          <a
-            href="mailto:hello@lerkfoods.com"
-            className="rounded-[20px] border border-[#f4d28a]/24 bg-[#2b0716]/50 p-5 text-center shadow-[0_18px_50px_rgba(20,0,8,0.22)] transition hover:border-[#f4d28a]/50 hover:bg-[#2b0716]/70"
-          >
-            <Mail className="mx-auto mb-3 text-[#f4d28a]" size={22} />
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f4d28a]">Email</p>
-            <p className="mt-2 text-sm text-white/78">hello@lerkfoods.com</p>
-          </a>
-          <a
-            href="tel:+919363611265"
-            className="rounded-[20px] border border-[#f4d28a]/24 bg-[#2b0716]/50 p-5 text-center shadow-[0_18px_50px_rgba(20,0,8,0.22)] transition hover:border-[#f4d28a]/50 hover:bg-[#2b0716]/70"
-          >
-            <Phone className="mx-auto mb-3 text-[#f4d28a]" size={22} />
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f4d28a]">Phone</p>
-            <p className="mt-2 text-sm text-white/78">+91 93636 11265</p>
-          </a>
-          <a
-            href="https://www.instagram.com/lerkfoods"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-[20px] border border-[#f4d28a]/24 bg-[#2b0716]/50 p-5 text-center shadow-[0_18px_50px_rgba(20,0,8,0.22)] transition hover:border-[#f4d28a]/50 hover:bg-[#2b0716]/70"
-          >
-            <Share2 className="mx-auto mb-3 text-[#f4d28a]" size={22} />
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f4d28a]">Instagram</p>
-            <p className="mt-2 text-sm text-white/78">@lerkfoods</p>
-          </a>
-        </section>
-      </div>
+          {/* Right – embedded form */}
+          <div>
+            <h3 className="mb-1 font-logo text-[1.9rem] font-light text-[#1C0A0F]">
+              Plan Your Event
+            </h3>
+            <div className="mb-6 h-px bg-[#5B0E2D]/20" />
+
+            <div className="overflow-hidden border border-[#1C0A0F]/8 bg-white">
+              <iframe
+                title="Lerk Foods Event Enquiry Form"
+                src={formUrl}
+                className="block min-h-[760px] w-full md:min-h-[1100px]"
+                loading="lazy"
+              >
+                Loading…
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── FOOTER ───────────────────────────────────────────────────────── */}
+      <footer className="bg-[#0D0205] px-8 py-7">
+        <div className="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/25 sm:flex-row">
+          <p>© {new Date().getFullYear()} Lerk Foods · Kans One Hotel, Pallavaram, Chennai</p>
+          <Link href="/" className="transition hover:text-champagne">
+            ← Back to Home
+          </Link>
+        </div>
+      </footer>
+
     </main>
   );
 }
