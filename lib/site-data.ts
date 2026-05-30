@@ -390,6 +390,6 @@ export const faqs = [
 export const footerDetails = {
   name: "Lerk Foods",
   address: "Kans One Hotel, 12 GST Road, Pallavaram, Chennai - 600043",
-  email: "hello@lerkfoods.com",
+  email: "lerkfoods@gmail.com",
   website: "www.lerkfoods.com",
 };

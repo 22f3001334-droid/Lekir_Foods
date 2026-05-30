@@ -94,10 +94,10 @@ export default function ContactPage() {
 
             <div className="space-y-4">
               <a
-                href="mailto:hello@lerkfoods.com"
+                href="mailto:lerkfoods@gmail.com"
                 className="flex items-center gap-3 text-[0.88rem] font-semibold text-[#5B0E2D] underline decoration-[#5B0E2D]/30 underline-offset-4 transition hover:decoration-[#5B0E2D]"
               >
-                hello@lerkfoods.com
+                lerkfoods@gmail.com
               </a>
 
               <a

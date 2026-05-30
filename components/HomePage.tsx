@@ -872,7 +872,7 @@ function LocationSection() {
             ))}
           </motion.div>
           <div className="mt-9">
-            <GoldButton href="mailto:hello@lerkfoods.com">Contact Lerk Foods</GoldButton>
+            <GoldButton href="mailto:lerkfoods@gmail.com">Contact Lerk Foods</GoldButton>
           </div>
         </div>
 
