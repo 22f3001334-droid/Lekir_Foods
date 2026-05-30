@@ -4,7 +4,7 @@ import { footerDetails } from "@/lib/site-data";
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-midnight py-12">
+    <footer className="bg-midnight py-12 text-white">
       <div className="container-shell grid gap-8 border-t border-champagne/16 pt-10 lg:grid-cols-[1fr_1.4fr_0.6fr]">
         <div>
           <Image
