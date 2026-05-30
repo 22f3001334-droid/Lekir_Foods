@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { posts } from "@/lib/blog-data";
+import SiteFooter from "@/components/SiteFooter";
 
 const tx = { duration: 0.85, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
 
@@ -38,7 +39,6 @@ function BlogNav() {
             { label: "Services", href: "/#services" },
             { label: "Menus", href: "/#menus" },
             { label: "Blog", href: "/blog" },
-            { label: "Contact", href: "/contact#plan-event" },
           ].map(({ label, href }) => (
             <Link key={label} href={href} className="transition hover:text-champagne">
               {label}
@@ -153,20 +153,6 @@ function BlogGrid() {
   );
 }
 
-// ── MINI FOOTER ───────────────────────────────────────────────────────────────
-function BlogFooter() {
-  return (
-    <footer className="bg-[#0D0205] px-8 py-7">
-      <div className="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/25 sm:flex-row">
-        <p>© {new Date().getFullYear()} Lerk Foods · Kans One Hotel, Pallavaram, Chennai</p>
-        <Link href="/" className="transition hover:text-champagne">
-          ← Back to Home
-        </Link>
-      </div>
-    </footer>
-  );
-}
-
 // ── PAGE ──────────────────────────────────────────────────────────────────────
 export default function BlogListPage() {
   return (
@@ -174,7 +160,7 @@ export default function BlogListPage() {
       <BlogNav />
       <BlogHero />
       <BlogGrid />
-      <BlogFooter />
+      <SiteFooter />
     </main>
   );
 }

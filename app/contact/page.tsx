@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, Share2 } from "lucide-react";
+import SiteFooter from "@/components/SiteFooter";
 
 const formUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSdFnIcgHxjwAEBOyby-hPJq34duQGE-3bBqT1DIbFm6wa9bnQ/viewform?embedded=true";
@@ -147,15 +148,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ── FOOTER ───────────────────────────────────────────────────────── */}
-      <footer className="bg-[#0D0205] px-8 py-7">
-        <div className="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/25 sm:flex-row">
-          <p>© {new Date().getFullYear()} Lerk Foods · Kans One Hotel, Pallavaram, Chennai</p>
-          <Link href="/" className="transition hover:text-champagne">
-            ← Back to Home
-          </Link>
-        </div>
-      </footer>
+      <SiteFooter />
 
     </main>
   );

@@ -13,28 +13,22 @@ import {
   ChevronDown,
   Clock3,
   Gem,
-  Globe,
   Hotel,
-  Mail,
   Map,
-  MapPin,
   Menu,
   PartyPopper,
-  Phone,
   Quote,
-  Send,
   ShieldCheck,
-  Share2,
   Sparkles,
   Star,
   Utensils,
   Users,
   X,
 } from "lucide-react";
+import SiteFooter from "@/components/SiteFooter";
 import {
   faqs,
   featureSections,
-  footerDetails,
   images,
   locationAreas,
   navLinks,
@@ -682,8 +676,8 @@ function QualitySection() {
 function MenuSection() {
   const section = featureSections[2];
   const menuPages = [
-    { title: "Banquet Menu 3A", image: images.banquetMenu3a },
-    { title: "Banquet Menu 3B", image: images.banquetMenu3b },
+    { title: "Side A", image: images.banquetMenu3a },
+    { title: "Side B", image: images.banquetMenu3b },
   ];
 
   return (
@@ -1040,7 +1034,6 @@ function FAQSection() {
 }
 
 function FooterCTA() {
-  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdFnIcgHxjwAEBOyby-hPJq34duQGE-3bBqT1DIbFm6wa9bnQ/viewform";
   const embedUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdFnIcgHxjwAEBOyby-hPJq34duQGE-3bBqT1DIbFm6wa9bnQ/viewform?embedded=true";
 
   return (
@@ -1074,15 +1067,6 @@ function FooterCTA() {
           <p className="mt-6 max-w-xl text-base leading-8 text-white/70">
             Share your event details and our team will get back to you with catering support for your date, guest count, and menu needs.
           </p>
-          <a
-            href={formUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex min-h-12 w-full items-center justify-center gap-2 border border-champagne/55 px-6 text-sm font-semibold uppercase tracking-[0.18em] text-champagne transition duration-300 hover:bg-champagne/10 sm:w-auto"
-          >
-            Open Form
-            <ArrowRight size={16} />
-          </a>
         </div>
 
         <div className="overflow-hidden rounded-[6px] border border-champagne/22 bg-midnight/78 shadow-[0_28px_90px_rgba(0,0,0,0.58)] backdrop-blur-md">
@@ -1097,61 +1081,6 @@ function FooterCTA() {
         </div>
       </motion.div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-midnight py-12">
-      <div className="container-shell grid gap-8 border-t border-champagne/16 pt-10 lg:grid-cols-[1fr_1.4fr_0.6fr]">
-        <div>
-          <Image
-            src="/images/lerk-gold-2.png"
-            alt="Lerk Foods"
-            width={144}
-            height={144}
-            className="h-28 w-28 object-contain"
-          />
-          <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
-            Luxury catering, curated menus, and hotel dining from Lerk Foods.
-          </p>
-        </div>
-        <div className="grid gap-4 text-sm text-white/68">
-          <p className="flex gap-3">
-            <MapPin className="mt-1 shrink-0 text-champagne" size={18} />
-            {footerDetails.address}
-          </p>
-          <a href={`mailto:${footerDetails.email}`} className="flex gap-3 transition hover:text-champagne">
-            <Mail className="mt-1 shrink-0 text-champagne" size={18} />
-            {footerDetails.email}
-          </a>
-          <a href="https://www.lerkfoods.com" className="flex gap-3 transition hover:text-champagne">
-            <Globe className="mt-1 shrink-0 text-champagne" size={18} />
-            {footerDetails.website}
-          </a>
-        </div>
-        <div className="flex gap-3 lg:justify-end">
-          {[
-            { href: "https://www.instagram.com/lerkfoods", label: "Lerk Foods Instagram", Icon: Share2 },
-            { href: "https://www.facebook.com/lerkfoods", label: "Lerk Foods Facebook", Icon: Send },
-            { href: "https://www.google.com/maps/dir//Lerk+Foods,+Acharya+Tulsi+Rd,+Pallavaram,+Chennai,+Tamil+Nadu+600043/@13.0475255,80.2086732,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a525f84d7432dc5:0x7bbbcb0087e808c9!2m2!1d80.1501576!2d12.9711005?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D", label: "Lerk Foods Google profile", Icon: Globe },
-            { href: "https://wa.me/919363611265", label: "WhatsApp Lerk Foods", Icon: Phone },
-          ].map(({ href, label, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              aria-label={label}
-              title={label}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gold-border inline-flex size-11 items-center justify-center text-champagne transition hover:bg-champagne/10"
-            >
-              <Icon size={18} />
-            </a>
-          ))}
-        </div>
-      </div>
-    </footer>
   );
 }
 
@@ -1174,7 +1103,7 @@ export default function HomePage() {
       <Testimonials />
       <FAQSection />
       <FooterCTA />
-      <Footer />
+      <SiteFooter />
     </main>
   );
 }

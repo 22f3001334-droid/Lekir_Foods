@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SiteFooter from "@/components/SiteFooter";
 
 const enter = {
   hidden: { opacity: 0, y: 18 },
@@ -41,7 +42,6 @@ function AboutNav() {
             { label: "Home",     href: "/"                  },
             { label: "Services", href: "/#services"         },
             { label: "Menus",    href: "/#menus"            },
-            { label: "Contact",  href: "/contact#plan-event"},
           ].map(({ label, href }) => (
             <Link key={label} href={href} className="text-[#fff4cf]/78 transition hover:text-[#f4d28a]">
               {label}
@@ -274,7 +274,7 @@ function PhilosophySection() {
 
           <motion.div
             variants={cascade}
-            className="grid border-t border-[#C9A84C]/12 md:grid-cols-3 md:divide-x md:divide-[#C9A84C]/12"
+            className="grid border-t border-[#C9A84C]/34 md:grid-cols-3 md:divide-x md:divide-[#C9A84C]/28"
           >
             {cards.map((c) => (
               <motion.div
@@ -284,13 +284,13 @@ function PhilosophySection() {
                 whileHover={{ backgroundColor: "rgba(91,14,45,0.15)" }}
                 className="group py-10 transition-colors duration-500 md:px-10 md:py-0 md:pt-10 md:first:pl-0 md:last:pr-0"
               >
-                <p className="mb-7 font-logo text-[3.8rem] font-light leading-none text-[#C9A84C]/18 transition-colors duration-500 group-hover:text-[#C9A84C]/45">
+                <p className="mb-7 font-logo text-[3.8rem] font-light leading-none text-[#C9A84C]/50 transition-colors duration-500 group-hover:text-[#C9A84C]/75">
                   {c.n}
                 </p>
                 <h3 className="mb-4 font-logo text-[2rem] font-light italic text-[#F5F0E8]">
                   {c.title}
                 </h3>
-                <p className="text-[0.82rem] leading-[1.9] text-[#F5F0E8]/48 transition-colors duration-500 group-hover:text-[#F5F0E8]/68">
+                <p className="text-[0.95rem] font-medium leading-8 text-[#F5F0E8] transition-colors duration-500 group-hover:text-white">
                   {c.body}
                 </p>
               </motion.div>
@@ -385,20 +385,6 @@ function AboutCTA() {
   );
 }
 
-// ── MINI FOOTER ───────────────────────────────────────────────────────────────
-function AboutFooter() {
-  return (
-    <footer className="bg-[#0D0205] px-8 py-7">
-      <div className="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/25 sm:flex-row">
-        <p>© {new Date().getFullYear()} Lerk Foods · Kans One Hotel, Pallavaram, Chennai</p>
-        <Link href="/" className="transition hover:text-champagne">
-          ← Back to Home
-        </Link>
-      </div>
-    </footer>
-  );
-}
-
 // ── PAGE ──────────────────────────────────────────────────────────────────────
 export default function AboutPage() {
   return (
@@ -410,7 +396,7 @@ export default function AboutPage() {
       <PhilosophySection />
       <SignatureStatement />
       <AboutCTA />
-      <AboutFooter />
+      <SiteFooter />
     </main>
   );
 }
