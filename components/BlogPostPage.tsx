@@ -359,13 +359,15 @@ function PostCTA() {
 // ── PAGE ──────────────────────────────────────────────────────────────────────
 export default function BlogPostPage({ slug: _slug }: { slug: string }) {
   return (
-    <main className="text-[#1C0A0F]">
+    <>
       <BlogNav />
-      <PostHero />
-      <ArticleMeta />
-      <ArticleBody />
-      <PostCTA />
+      <main className="text-[#1C0A0F]">
+        <PostHero />
+        <ArticleMeta />
+        <ArticleBody />
+        <PostCTA />
+      </main>
       <SiteFooter />
-    </main>
+    </>
   );
 }

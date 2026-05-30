@@ -388,15 +388,17 @@ function AboutCTA() {
 // ── PAGE ──────────────────────────────────────────────────────────────────────
 export default function AboutPage() {
   return (
-    <main className="text-[#1C0A0F]">
+    <>
       <AboutNav />
-      <EditorialIntro />
-      <FullBleedImage />
-      <StorySection />
-      <PhilosophySection />
-      <SignatureStatement />
-      <AboutCTA />
+      <main className="text-[#1C0A0F]">
+        <EditorialIntro />
+        <FullBleedImage />
+        <StorySection />
+        <PhilosophySection />
+        <SignatureStatement />
+        <AboutCTA />
+      </main>
       <SiteFooter />
-    </main>
+    </>
   );
 }

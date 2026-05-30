@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main id="plan-event" className="text-[#1C0A0F]">
+    <main id="plan-event">
 
       {/* ── NAV ─────────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-50 border-b border-champagne/10 bg-midnight/95 backdrop-blur-xl">
@@ -77,7 +77,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── CONTACT SECTION ──────────────────────────────────────────────── */}
-      <section className="bg-[#F5F0E8] px-6 py-16 md:px-10 md:py-24">
+      <section className="bg-[#F5F0E8] px-6 py-16 text-[#1C0A0F] md:px-10 md:py-24">
         <div className="mx-auto grid max-w-[1180px] gap-14 lg:grid-cols-[1fr_2.2fr] lg:gap-20">
 
           {/* Left – contact details */}

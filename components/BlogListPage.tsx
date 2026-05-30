@@ -156,11 +156,13 @@ function BlogGrid() {
 // ── PAGE ──────────────────────────────────────────────────────────────────────
 export default function BlogListPage() {
   return (
-    <main className="text-[#1C0A0F]">
+    <>
       <BlogNav />
-      <BlogHero />
-      <BlogGrid />
+      <main className="text-[#1C0A0F]">
+        <BlogHero />
+        <BlogGrid />
+      </main>
       <SiteFooter />
-    </main>
+    </>
   );
 }
