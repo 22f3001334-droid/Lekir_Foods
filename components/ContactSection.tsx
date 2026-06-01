@@ -125,19 +125,20 @@ export default function ContactSection() {
     setToast(null);
 
     try {
-      const body = new URLSearchParams({
-        name: form.name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim(),
-        eventType: form.eventType,
-        message: form.message.trim(),
-      });
-
+      // Content-Type: text/plain keeps this a simple request (no CORS preflight)
+      // while the JSON body is still readable via JSON.parse(e.postData.contents)
+      // in the Apps Script doPost handler.
       await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          eventType: form.eventType,
+          message: form.message.trim(),
+        }),
       });
 
       setForm(emptyForm);
