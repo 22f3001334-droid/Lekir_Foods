@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 
 const enter = {
@@ -22,42 +23,7 @@ const cascade = {
 
 const tx = { duration: 0.85, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] };
 
-// ── NAV ───────────────────────────────────────────────────────────────────────
-function AboutNav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-[#f4d28a]/20 bg-[#0f1015]/96 text-[#fff4cf] shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-      <div className="mx-auto flex min-h-20 max-w-[1180px] items-center justify-between gap-6 px-6">
-        <Link href="/" aria-label="Lerk Foods home">
-          <Image
-            src="/images/lerk-gold-2.png"
-            alt="Lerk Foods"
-            width={128}
-            height={128}
-            className="h-24 w-24 object-contain"
-            priority
-          />
-        </Link>
-        <nav className="hidden items-center gap-7 text-[0.72rem] font-semibold uppercase tracking-[0.18em] lg:flex">
-          {[
-            { label: "Home",     href: "/"                  },
-            { label: "Services", href: "/#services"         },
-            { label: "Menus",    href: "/#menus"            },
-          ].map(({ label, href }) => (
-            <Link key={label} href={href} className="text-[#fff4cf]/78 transition hover:text-[#f4d28a]">
-              {label}
-            </Link>
-          ))}
-        </nav>
-        <Link
-          href="/contact#plan-event"
-          className="hidden border border-[#f4d28a]/55 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-[#f4d28a] transition hover:bg-[#f4d28a]/10 lg:block"
-        >
-          Plan Your Event
-        </Link>
-      </div>
-    </header>
-  );
-}
+
 
 // ── SECTION 1 · EDITORIAL INTRO ───────────────────────────────────────────────
 function EditorialIntro() {
@@ -389,7 +355,7 @@ function AboutCTA() {
 export default function AboutPage() {
   return (
     <>
-      <AboutNav />
+      <SiteNav />
       <main className="text-[#1C0A0F]">
         <EditorialIntro />
         <FullBleedImage />

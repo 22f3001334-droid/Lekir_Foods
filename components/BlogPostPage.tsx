@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 
 const tx = { duration: 0.85, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
@@ -17,43 +18,6 @@ const cascade = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-// ── NAV ───────────────────────────────────────────────────────────────────────
-function BlogNav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-champagne/10 bg-midnight/95 backdrop-blur-xl">
-      <div className="mx-auto flex min-h-20 max-w-[1180px] items-center justify-between gap-6 px-6">
-        <Link href="/" aria-label="Lerk Foods home">
-          <Image
-            src="/images/lerk-gold-2.png"
-            alt="Lerk Foods"
-            width={128}
-            height={128}
-            className="h-24 w-24 object-contain"
-            priority
-          />
-        </Link>
-        <nav className="hidden items-center gap-7 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/68 lg:flex">
-          {[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/#services" },
-            { label: "Menus", href: "/#menus" },
-            { label: "Blog", href: "/blog" },
-          ].map(({ label, href }) => (
-            <Link key={label} href={href} className="transition hover:text-champagne">
-              {label}
-            </Link>
-          ))}
-        </nav>
-        <Link
-          href="/contact#plan-event"
-          className="hidden border border-champagne/38 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne/10 lg:block"
-        >
-          Plan Your Event
-        </Link>
-      </div>
-    </header>
-  );
-}
 
 // ── HERO IMAGE ────────────────────────────────────────────────────────────────
 function PostHero() {
@@ -360,7 +324,7 @@ function PostCTA() {
 export default function BlogPostPage({ slug: _slug }: { slug: string }) {
   return (
     <>
-      <BlogNav />
+      <SiteNav />
       <main className="text-[#1C0A0F]">
         <PostHero />
         <ArticleMeta />
