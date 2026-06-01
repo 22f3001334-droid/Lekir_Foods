@@ -25,6 +25,7 @@ import {
   Users,
   X,
 } from "lucide-react";
+import ContactSection from "@/components/ContactSection";
 import SiteFooter from "@/components/SiteFooter";
 import {
   faqs,
@@ -1033,57 +1034,6 @@ function FAQSection() {
   );
 }
 
-function FooterCTA() {
-  const embedUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdFnIcgHxjwAEBOyby-hPJq34duQGE-3bBqT1DIbFm6wa9bnQ/viewform?embedded=true";
-
-  return (
-    <section id="plan-event" className="relative overflow-hidden bg-midnight py-20 md:py-28">
-      <Image
-        src={images.hero.src}
-        alt="Luxury catering dining experience by Lerk Foods"
-        fill
-        sizes="100vw"
-        className="object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#020203] via-midnight/92 to-midnight/68" />
-      <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/38 to-midnight/80" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-champagne/38 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-champagne/32 to-transparent" />
-
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="container-shell relative z-10 grid items-center gap-10 lg:grid-cols-[0.75fr_1.25fr]"
-      >
-        <div>
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-champagne/82">
-            Begin the Plan
-          </p>
-          <h2 className="luxury-heading text-5xl text-[#fff4cf] md:text-7xl">
-            Let&apos;s Create an Experience
-            <span className="gold-gradient-text mt-2 block">Your Guests Will Remember.</span>
-          </h2>
-          <p className="mt-6 max-w-xl text-base leading-8 text-white/70">
-            Share your event details and our team will get back to you with catering support for your date, guest count, and menu needs.
-          </p>
-        </div>
-
-        <div className="overflow-hidden rounded-[6px] border border-champagne/22 bg-midnight/78 shadow-[0_28px_90px_rgba(0,0,0,0.58)] backdrop-blur-md">
-          <iframe
-            title="Lerk Foods Plan Your Event Form"
-            src={embedUrl}
-            className="h-[42rem] w-full bg-white md:h-[48rem]"
-            loading="lazy"
-          >
-            Loading...
-          </iframe>
-        </div>
-      </motion.div>
-    </section>
-  );
-}
-
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-midnight relative">
@@ -1102,7 +1052,9 @@ export default function HomePage() {
       <SectionGutter />
       <Testimonials />
       <FAQSection />
-      <FooterCTA />
+      <div id="plan-event">
+        <ContactSection />
+      </div>
       <SiteFooter />
     </main>
   );
