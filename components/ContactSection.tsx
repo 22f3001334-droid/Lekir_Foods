@@ -95,6 +95,7 @@ export default function ContactSection() {
   const [errors, setErrors] = useState<Partial<typeof emptyForm>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<Toast | null>(null);
+  const [accepted, setAccepted] = useState(false);
 
   function set(field: keyof typeof emptyForm) {
     return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -295,11 +296,33 @@ export default function ContactSection() {
               {errors.message && <p className="mt-1 text-[0.72rem] text-red-400">{errors.message}</p>}
             </div>
 
+            {/* T&C checkbox */}
+            <label className="flex cursor-pointer items-start gap-3 pt-1">
+              <input
+                type="checkbox"
+                checked={accepted}
+                onChange={(e) => setAccepted(e.target.checked)}
+                disabled={isSubmitting}
+                className="mt-[3px] h-4 w-4 shrink-0 cursor-pointer accent-[#C9A84C] disabled:opacity-50"
+              />
+              <span className="text-[0.75rem] leading-[1.6] text-white/50">
+                I accept to the{" "}
+                <a
+                  href="/terms-and-conditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#C9A84C] underline underline-offset-2 hover:text-[#C9A84C]/80"
+                >
+                  Terms &amp; Conditions
+                </a>
+              </span>
+            </label>
+
             {/* Submit */}
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="group flex w-full items-center justify-center gap-3 gold-gradient-bg py-4 text-[0.72rem] font-bold uppercase tracking-[0.28em] text-midnight transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+              disabled={isSubmitting || !accepted}
+              className="group flex w-full items-center justify-center gap-3 gold-gradient-bg py-4 text-[0.72rem] font-bold uppercase tracking-[0.28em] text-midnight transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
