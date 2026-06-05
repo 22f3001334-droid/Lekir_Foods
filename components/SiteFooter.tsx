@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Globe, Mail, MapPin } from "lucide-react";
 import { footerDetails } from "@/lib/site-data";
 
@@ -65,6 +66,20 @@ export default function SiteFooter() {
             <Globe className="mt-1 shrink-0 text-champagne" size={18} />
             {footerDetails.website}
           </a>
+          <nav
+            aria-label="Footer menu"
+            className="flex flex-wrap gap-x-5 gap-y-2 pt-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-champagne/82"
+          >
+            <Link href="/terms-and-conditions" className="transition hover:text-champagne">
+              Terms & Conditions
+            </Link>
+            <Link href="/cookie-policy" className="transition hover:text-champagne">
+              Cookie Policy
+            </Link>
+            <Link href="/privacy-policy" className="transition hover:text-champagne">
+              Privacy Policy
+            </Link>
+          </nav>
         </div>
         <div className="flex gap-3 lg:justify-end">
           {[
