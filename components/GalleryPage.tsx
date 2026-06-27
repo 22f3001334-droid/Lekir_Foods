@@ -18,20 +18,40 @@ const cascade = {
 
 const tx = { duration: 0.85, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
 
-const galleryImages = [
-  { src: "/images/wedding.png", alt: "Wedding catering by Lerk Foods", tall: true },
-  { src: "/images/plated.png", alt: "Plated fine dining presentation" },
-  { src: "/images/corporate.png", alt: "Corporate event catering" },
-  { src: "/images/birthday.png", alt: "Birthday celebration catering" },
-  { src: "/images/betrothal.png", alt: "Betrothal ceremony catering", tall: true },
-  { src: "/images/festive.png", alt: "Festive occasion spread" },
-  { src: "/images/outdoor.png", alt: "Outdoor catered event" },
-  { src: "/images/premium_presentation.png", alt: "Premium food presentation" },
-  { src: "/images/dining.png", alt: "Elegant dining setup", tall: true },
-  { src: "/images/conference.png", alt: "Conference catering setup" },
-  { src: "/images/inroom.png", alt: "In-room dining service" },
-  { src: "/images/meeting.png", alt: "Business meeting catering" },
-];
+const tilePattern = [
+  "feature",
+  "wide",
+  "standard",
+  "standard",
+  "tall",
+  "wide",
+  "standard",
+  "large",
+  "standard",
+  "tall",
+  "wide",
+  "standard",
+] as const;
+
+type TileSize = (typeof tilePattern)[number];
+
+const tileClasses: Record<TileSize, string> = {
+  feature: "col-span-2 row-span-2 md:col-span-3 md:row-span-2",
+  large: "col-span-2 row-span-2",
+  tall: "col-span-1 row-span-2",
+  wide: "col-span-2 row-span-1",
+  standard: "col-span-1 row-span-1",
+};
+
+const galleryImages = Array.from({ length: 45 }, (_, index) => {
+  const imageNumber = String(index + 1).padStart(2, "0");
+
+  return {
+    src: `/images/gallery/selected/gallery-selected-${imageNumber}.webp`,
+    alt: `Lerk Foods catered event gallery image ${index + 1}`,
+    size: tilePattern[index % tilePattern.length],
+  };
+});
 
 function GalleryIntro() {
   return (
@@ -68,31 +88,30 @@ function GalleryIntro() {
 
 function GalleryGrid() {
   return (
-    <section className="bg-[#F5F0E8] px-8 pb-24 md:pb-32">
-      <div className="mx-auto max-w-[1180px]">
+    <section className="bg-black px-4 py-6 sm:px-6 md:px-8 md:py-8">
+      <div className="mx-auto max-w-[1440px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.05 }}
           variants={cascade}
-          className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6"
+          className="grid auto-rows-[8.5rem] grid-cols-2 gap-3 sm:auto-rows-[10rem] md:grid-cols-4 md:gap-4 lg:grid-cols-6 lg:auto-rows-[11.5rem]"
         >
           {galleryImages.map((img) => (
             <motion.div
               key={img.src}
               variants={enter}
               transition={tx}
-              className={`relative overflow-hidden ${
-                img.tall ? "aspect-[3/4]" : "aspect-square"
-              }`}
+              className={`relative overflow-hidden rounded-[8px] bg-white/5 ${tileClasses[img.size]}`}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                sizes="(max-width: 768px) 50vw, 33vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 18vw"
                 className="object-cover object-center transition-transform duration-700 hover:scale-105"
               />
+              <div className="pointer-events-none absolute inset-0 bg-black/10 ring-1 ring-inset ring-white/10" />
             </motion.div>
           ))}
         </motion.div>
