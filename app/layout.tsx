@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Poppins } from "next/font/google";
+import FloatingWhatsAppButton from "@/components/FloatingWhatsAppButton";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -46,7 +47,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${cormorant.variable}`} suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        {children}
+        <FloatingWhatsAppButton />
+      </body>
     </html>
   );
 }
