@@ -20,17 +20,17 @@ const tx = { duration: 0.85, ease: [0.22, 1, 0.36, 1] as [number, number, number
 
 const tilePattern = [
   "feature",
-  "wide",
   "standard",
+  "wide",
   "standard",
   "tall",
-  "wide",
   "standard",
   "large",
+  "wide",
+  "standard",
   "standard",
   "tall",
   "wide",
-  "standard",
 ] as const;
 
 type TileSize = (typeof tilePattern)[number];
@@ -95,7 +95,7 @@ function GalleryGrid() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.05 }}
           variants={cascade}
-          className="grid auto-rows-[8.5rem] grid-cols-2 gap-3 sm:auto-rows-[10rem] md:grid-cols-4 md:gap-4 lg:grid-cols-6 lg:auto-rows-[11.5rem]"
+          className="grid grid-flow-dense auto-rows-[8.5rem] grid-cols-2 gap-3 sm:auto-rows-[10rem] md:grid-cols-4 md:gap-4 lg:grid-cols-6 lg:auto-rows-[11.5rem]"
         >
           {galleryImages.map((img) => (
             <motion.div
